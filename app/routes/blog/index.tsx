@@ -4,7 +4,7 @@ import { GradientText } from '~/components/ui/gradient-text'
 import { IconButton } from '~/components/ui/icon-button'
 import { getAllPosts } from '~/lib/posts'
 import { seo } from '~/lib/seo'
-import type { Route } from './+types/blog._index'
+import type { Route } from './+types/index'
 
 export function meta(_: Route.MetaArgs) {
   return seo({

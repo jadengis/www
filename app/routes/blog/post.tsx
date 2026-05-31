@@ -7,14 +7,14 @@ import { Prose } from '~/components/ui/prose'
 import type { PostMeta as Post } from '~/lib/posts'
 import { seo } from '~/lib/seo'
 import { SITE } from '~/lib/site'
-import type { Route } from './+types/blog.$slug'
+import type { Route } from './+types/post'
 
 type Frontmatter = Omit<Post, 'slug'>
 type PostModule = { default: ComponentType; frontmatter: Frontmatter }
 
 // Eager glob lives in the route module (not a loader) so the MDX component is
 // available for SSR + hydration. Bodies only bundle into this route's chunk.
-const modules = import.meta.glob<PostModule>('../content/blog/*.mdx', {
+const modules = import.meta.glob<PostModule>('../../content/blog/*.mdx', {
   eager: true,
 })
 
