@@ -1,10 +1,15 @@
+/** GitHub "linguist" colors, so language dots match what GitHub shows. */
+export const LANGUAGE_COLORS: Record<string, string> = {
+  TypeScript: '#3178c6',
+  Elixir: '#6e4a7e',
+}
+
 export type Project = {
   name: string
   description: string
   href: string
   kind: 'repo' | 'channel'
   language?: string
-  stars?: number
   /** Accent color used for the avatar tile + hover glow. */
   color: string
 }
@@ -17,7 +22,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/ngx-clarity',
     kind: 'repo',
     language: 'TypeScript',
-    stars: 20,
     color: '#3178c6',
   },
   {
@@ -26,7 +30,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/ng-helmet',
     kind: 'repo',
     language: 'TypeScript',
-    stars: 6,
     color: '#dd0031',
   },
   {
@@ -35,7 +38,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/ngx-inject-control',
     kind: 'repo',
     language: 'TypeScript',
-    stars: 5,
     color: '#9b4dca',
   },
   {
@@ -44,7 +46,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/google_ai_ex',
     kind: 'repo',
     language: 'Elixir',
-    stars: 3,
     color: '#a855f7',
   },
   {
@@ -53,7 +54,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/ecto_irs',
     kind: 'repo',
     language: 'Elixir',
-    stars: 2,
     color: '#7c3aed',
   },
   {
@@ -62,7 +62,6 @@ export const PROJECTS: Project[] = [
     href: 'https://github.com/jadengis/recaptcha_ex',
     kind: 'repo',
     language: 'Elixir',
-    stars: 1,
     color: '#6d28d9',
   },
   {

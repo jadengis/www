@@ -44,7 +44,7 @@ export function Footer() {
 
       <div className="border-edge border-t">
         <p className="text-content-muted mx-auto max-w-5xl px-6 py-6 text-xs">
-          © {new Date().getFullYear()} {SITE.name}. Built with React Router.
+          © {new Date().getFullYear()} {SITE.name}.
         </p>
       </div>
     </footer>

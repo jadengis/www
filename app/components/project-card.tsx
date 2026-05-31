@@ -1,6 +1,6 @@
-import { ArrowUpRight, Star } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { SocialIcon } from '~/components/ui/social-icon'
-import type { Project } from '~/lib/projects'
+import { LANGUAGE_COLORS, type Project } from '~/lib/projects'
 
 function Avatar({ project }: { project: Project }) {
   if (project.kind === 'channel') {
@@ -15,10 +15,10 @@ function Avatar({ project }: { project: Project }) {
   }
   return (
     <span
-      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg font-mono text-lg font-bold text-white"
+      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-white"
       style={{ backgroundColor: project.color }}
     >
-      {project.name[0].toUpperCase()}
+      <SocialIcon name="github" className="h-6 w-6" />
     </span>
   )
 }
@@ -44,13 +44,11 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="text-content-muted mt-auto flex items-center gap-4 text-xs">
         {project.language && (
           <span className="inline-flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: project.color }} />
+            <span
+              className="h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: LANGUAGE_COLORS[project.language] ?? project.color }}
+            />
             {project.language}
-          </span>
-        )}
-        {project.stars !== undefined && (
-          <span className="inline-flex items-center gap-1">
-            <Star className="h-3.5 w-3.5" /> {project.stars}
           </span>
         )}
         {project.kind === 'channel' && <span>YouTube channel</span>}
