@@ -1,15 +1,149 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
+/* ------------------------------------------------------------------ */
+/*  Brand palette: black / blood-red / bone-white + chromatic accents */
+/* ------------------------------------------------------------------ */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+  --color-ink: #0a0a0b;
+  --color-ink-soft: #141416;
+  --color-bone: #fafafa;
+  --color-bone-soft: #ededee;
+
+  --color-blood: #e11d2a;
+  --color-blood-bright: #ff2d40;
+  --color-blood-dark: #a50f1a;
+
+  /* chromatic gradient stops (identical in both themes) */
+  --color-grad-1: #ff2d40;
+  --color-grad-2: #ff7a18;
+  --color-grad-3: #b829e6;
+  --color-grad-4: #2d9bff;
+}
+
+/* Semantic tokens that flip with prefers-color-scheme.
+   `@theme inline` makes the generated utilities (bg-surface, text-content, …)
+   reference the live CSS variable, so they respond to the media query. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-content: var(--content);
+  --color-content-muted: var(--content-muted);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+}
+
+:root {
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --content: var(--color-ink);
+  --content-muted: #52525b;
+  --edge: #e4e4e7;
+  --accent: var(--color-blood);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #0a0a0b;
+    --surface-2: #141417;
+    --content: var(--color-bone);
+    --content-muted: #a1a1aa;
+    --edge: #27272a;
+    --accent: var(--color-blood-bright);
+    color-scheme: dark;
+  }
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-surface text-content;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* ------------------------------------------------------------------ */
+/*  Reusable gradient / motion utilities                              */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  .bg-chromatic {
+    background-image: linear-gradient(
+      120deg,
+      var(--color-grad-1),
+      var(--color-grad-2),
+      var(--color-grad-3),
+      var(--color-grad-4)
+    );
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      120deg,
+      var(--color-grad-1),
+      var(--color-grad-2),
+      var(--color-grad-3),
+      var(--color-grad-4)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* double-background trick: solid fill + gradient ring on border-box */
+  .gradient-border {
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(var(--surface), var(--surface)),
+      linear-gradient(120deg, var(--color-grad-1), var(--color-grad-2), var(--color-grad-3), var(--color-grad-4));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .animate-shimmer {
+    background-size: 220% 220%;
+    animation: shimmer 7s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Shiki dual-theme (rehype-pretty-code): consume the emitted vars   */
+/*  and flip light/dark with prefers-color-scheme.                    */
+/* ------------------------------------------------------------------ */
+pre[data-theme],
+pre[data-theme] span {
+  color: var(--shiki-light);
+}
+pre[data-theme] {
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  pre[data-theme],
+  pre[data-theme] span {
+    color: var(--shiki-dark);
+  }
+  pre[data-theme] {
+    background-color: var(--shiki-dark-bg);
   }
 }

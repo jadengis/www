@@ -1,0 +1,64 @@
+---
+title: Notes on building AI-native, for engineers who were skeptical
+date: '2026-05-18'
+description: A few hard-won lessons from shipping products where a model sits in the critical path — written for engineers who, like me, started out unconvinced.
+heroImage: /images/blog/ai-native-engineering/hero.jpg
+thumbnail: /images/blog/ai-native-engineering/thumb.jpg
+tags: ['engineering', 'ai']
+published: true
+---
+
+I spent most of my career writing software that did exactly what I told it to.
+You write a function, you write a test, the test passes, and the behavior is
+pinned forever. That determinism is the thing I loved about the job. So when
+the work shifted to putting a language model in the critical path, my first
+reaction was suspicion.
+
+A year of doing it changed my mind — not about the determinism, which is real
+and which you give up, but about whether the tradeoff is worth it. Here are the
+notes I wish someone had handed me at the start.
+
+## Treat the prompt like an interface, not a string
+
+The biggest mental unlock was to stop thinking of a prompt as text and start
+thinking of it as an API contract. It has inputs, it has an expected output
+shape, and it deserves the same versioning and review you'd give any other
+boundary in the system.
+
+```ts
+type Extraction = {
+  intent: 'quote' | 'claim' | 'renewal' | 'unknown'
+  confidence: number // 0..1
+  fields: Record<string, string>
+}
+
+async function classify(email: string): Promise<Extraction> {
+  const result = await model.generate({
+    system: SYSTEM_PROMPT, // versioned, reviewed, tested
+    input: email,
+    schema: ExtractionSchema, // validate before you trust it
+  })
+  return ExtractionSchema.parse(result)
+}
+```
+
+The `parse` at the end is not optional. The model is a very capable, very
+confident intern, and you would not merge an intern's PR without CI.
+
+## Evals are your test suite now
+
+You cannot unit-test "did it understand the email," but you can build a small,
+honest set of labeled examples and measure against it on every change. The set
+does not need to be big to be useful — a few dozen real cases caught more
+regressions for us than any amount of staring at outputs by hand.
+
+## The unglamorous parts still win
+
+Retries, timeouts, idempotency, observability, cost ceilings. The model is the
+exciting part, but the reason a product feels reliable is the same boring
+plumbing it always was. If anything, AI raises the bar: failures are softer and
+weirder, so your instrumentation has to be better than you're used to.
+
+None of this made me love nondeterminism. It did convince me that, handled like
+an engineer rather than a magician, it's just another component with a spec —
+one that happens to be unusually good at language.

@@ -1,4 +1,4 @@
-import type { Config } from "@react-router/dev/config";
+import type { Config } from '@react-router/dev/config'
 
 export default {
   // Config options...
@@ -11,4 +11,4 @@ export default {
     v8_trailingSlashAwareDataRequests: true,
     v8_viteEnvironmentApi: true,
   },
-} satisfies Config;
+} satisfies Config

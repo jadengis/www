@@ -97,7 +97,7 @@ pnpm typecheck   # react-router typegen && tsc
   React Router / Playwright docs does not apply — there's no `apt-get` and no
   sudo. The libs Chrome needs are already on the system.
 - **Content assertion uses the SSR HTML, not the live DOM.** `chrome
-  --screenshot` gives a picture but no DOM query. Because the app is
+--screenshot` gives a picture but no DOM query. Because the app is
   server-rendered, the marker text ("React Router Docs", "Join Discord") is
   already in `curl http://localhost:3000`, so the driver greps that. For real
   click/type flows you'd add Playwright as a project dep.

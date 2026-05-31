@@ -1,0 +1,45 @@
+---
+title: The signal chain as craft
+date: '2026-04-27'
+description: Why the order of boxes between a guitar and an amp is the most underrated decision in tone — and what chasing it has in common with writing software.
+heroImage: /images/blog/signal-chain-as-craft/hero.jpg
+thumbnail: /images/blog/signal-chain-as-craft/thumb.jpg
+tags: ['music', 'craft']
+published: true
+---
+
+Ask a guitarist what makes their tone and they'll usually point at one thing:
+the guitar, the amp, that one pedal. The honest answer is less satisfying. Tone
+is a _pipeline_, and like any pipeline the order of the stages matters as much
+as the stages themselves.
+
+## Order is the whole game
+
+Run an overdrive into a fuzz and you get one thing; swap them and you get a
+completely different, often unusable, sound. Put modulation before distortion
+and it smears; put it after and it shimmers. The components didn't change. The
+graph did.
+
+```text
+guitar → tuner → wah → overdrive → distortion
+       → [amp loop] → chorus → delay → reverb → out
+```
+
+Dynamic and gain effects up front, where the signal is rawest. Time and space
+effects at the end, where you want them to sit on top of everything rather than
+get crushed by the gain stage. That single principle explains most of a good
+board.
+
+## It's the same instinct as good software
+
+This is going to sound like a stretch, but the thing I enjoy about a signal
+chain is exactly the thing I enjoy about architecture: you're composing small,
+well-understood transforms into an order that produces an emergent result. Each
+pedal is a pure function. The board is a pipeline. The bugs are the same kind of
+bug — a stage in the wrong place, a gain structure that clips where you didn't
+want it to, a feedback loop you didn't intend.
+
+The difference is the feedback time. A bad refactor takes a sprint to feel. A
+bad pedal order takes about four seconds — you hear it, you move the box, you
+hear it again. That tight loop is why I find it relaxing. It's debugging with
+your ears, and the build is always green when it sounds right.

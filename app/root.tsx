@@ -1,27 +1,39 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 
-import type { Route } from "./+types/root";
-import "./app.css";
+import type { Route } from './+types/root'
+import './app.css'
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous',
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
-];
+]
+
+const SITE_URL = 'https://john.deng.is'
+
+export const meta: Route.MetaFunction = () => [
+  { title: 'John Dengis — Software auteur, code luthier, music maker' },
+  {
+    name: 'description',
+    content:
+      'Personal site of John Dengis: software engineer and former engineering leader, YouTuber, guitarist, and language learner.',
+  },
+  { property: 'og:type', content: 'website' },
+  { property: 'og:site_name', content: 'John Dengis' },
+  { property: 'og:url', content: SITE_URL },
+  { property: 'og:image', content: `${SITE_URL}/og/default.png` },
+  { name: 'twitter:card', content: 'summary_large_image' },
+  { name: 'twitter:creator', content: '@jadengis' },
+  { name: 'theme-color', content: '#0a0a0b' },
+]
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,38 +50,38 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Outlet />
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
+  let message = 'Oops!'
+  let details = 'An unexpected error occurred.'
+  let stack: string | undefined
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    message = error.status === 404 ? '404' : 'Error'
+    details = error.status === 404 ? 'The requested page could not be found.' : error.statusText || details
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
+    details = error.message
+    stack = error.stack
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-4 px-6 text-center">
+      <p className="text-gradient text-7xl font-black tracking-tight">{message}</p>
+      <p className="text-content-muted text-lg">{details}</p>
+      <a href="/" className="text-accent mt-2 font-semibold underline-offset-4 hover:underline">
+        Back home
+      </a>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre className="border-edge bg-surface-2 mt-4 w-full overflow-x-auto rounded-lg border p-4 text-left text-sm">
           <code>{stack}</code>
         </pre>
       )}
     </main>
-  );
+  )
 }
