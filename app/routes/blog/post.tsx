@@ -3,9 +3,9 @@ import type { ComponentType } from 'react'
 import { Link } from 'react-router'
 import { JsonLd } from '~/components/jsonld'
 import { PostMeta } from '~/components/post-meta'
+import { Seo } from '~/components/seo'
 import { Prose } from '~/components/ui/prose'
 import type { PostMeta as Post } from '~/lib/posts'
-import { seo } from '~/lib/seo'
 import { SITE } from '~/lib/site'
 import type { Route } from './+types/post'
 
@@ -36,18 +36,6 @@ export function loader({ params }: Route.LoaderArgs) {
   return { meta: { slug: params.slug, ...mod.frontmatter } satisfies Post }
 }
 
-export function meta({ data }: Route.MetaArgs) {
-  if (!data) return seo({ title: 'Post not found', path: '/blog' })
-  const { meta } = data
-  return seo({
-    title: meta.title,
-    description: meta.description,
-    path: `/blog/${meta.slug}`,
-    image: `${SITE.url}${meta.heroImage}`,
-    type: 'article',
-  })
-}
-
 export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
   const { meta } = loaderData
   const Body = bySlug.get(params.slug)!.default
@@ -57,7 +45,7 @@ export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
     '@type': 'BlogPosting',
     headline: meta.title,
     description: meta.description,
-    image: `${SITE.url}${meta.heroImage}`,
+    image: `${SITE.url}${meta.image.hero}`,
     datePublished: meta.date,
     dateModified: meta.date,
     keywords: meta.tags.join(', '),
@@ -68,12 +56,19 @@ export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
 
   return (
     <article>
+      <Seo
+        title={meta.title}
+        description={meta.description}
+        path={`/blog/${meta.slug}`}
+        image={`${SITE.url}${meta.image.hero}`}
+        type="article"
+      />
       <JsonLd data={articleLd} />
 
       {/* Hero */}
       <header className="relative isolate overflow-hidden">
         <img
-          src={meta.heroImage}
+          src={meta.image.hero}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 -z-10 h-full w-full object-cover"

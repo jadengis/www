@@ -31,7 +31,7 @@ export function BlogCard({ post, index }: { post: Post; index: number }) {
         {/* Square thumbnail */}
         <div className={cn('aspect-square overflow-hidden sm:aspect-auto', imageRight ? 'sm:order-2' : 'sm:order-1')}>
           <img
-            src={post.thumbnail}
+            src={post.image.thumbnail}
             alt=""
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"

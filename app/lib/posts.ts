@@ -3,8 +3,10 @@ export type PostMeta = {
   title: string
   date: string // ISO yyyy-mm-dd
   description: string
-  heroImage: string
-  thumbnail: string
+  image: {
+    hero: string
+    thumbnail: string
+  }
   tags: string[]
   published: boolean
 }

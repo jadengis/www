@@ -6,8 +6,10 @@ declare module '*.mdx' {
     title: string
     date: string
     description: string
-    heroImage: string
-    thumbnail: string
+    image: {
+      hero: string
+      thumbnail: string
+    }
     tags: string[]
     published: boolean
     [key: string]: unknown

@@ -3,18 +3,10 @@ import { Link } from 'react-router'
 import { Hero } from '~/components/hero'
 import { JsonLd } from '~/components/jsonld'
 import { ProjectCard } from '~/components/project-card'
+import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 import { PROJECTS } from '~/lib/projects'
-import { seo } from '~/lib/seo'
 import { SITE, SOCIALS } from '~/lib/site'
-import type { Route } from './+types/home'
-
-export function meta(_: Route.MetaArgs) {
-  return seo({
-    title: 'John Dengis — Software auteur, code luthier, music maker',
-    path: '/',
-  })
-}
 
 const FACETS = [
   {
@@ -60,6 +52,7 @@ export default function Home() {
 
   return (
     <>
+      <Seo title="John Dengis — Software auteur, code luthier, music maker" path="/" />
       <JsonLd data={personLd} />
       <JsonLd data={siteLd} />
 

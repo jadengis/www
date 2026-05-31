@@ -1,20 +1,16 @@
 import { ProjectCard } from '~/components/project-card'
+import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 import { PROJECTS } from '~/lib/projects'
-import { seo } from '~/lib/seo'
-import type { Route } from './+types/projects'
-
-export function meta(_: Route.MetaArgs) {
-  return seo({
-    title: 'Projects',
-    path: '/projects',
-    description: 'Open-source libraries and a YouTube channel made by John Dengis.',
-  })
-}
 
 export default function Projects() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
+      <Seo
+        title="Projects"
+        path="/projects"
+        description="Open-source libraries and a YouTube channel made by John Dengis."
+      />
       <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
         <GradientText>Projects</GradientText>
       </h1>

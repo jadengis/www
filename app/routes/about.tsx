@@ -1,19 +1,9 @@
 import { Cat, Dog, Download, MapPin } from 'lucide-react'
+import { Seo } from '~/components/seo'
 import { SocialLinks } from '~/components/social-links'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { GradientText } from '~/components/ui/gradient-text'
-import { seo } from '~/lib/seo'
-import type { Route } from './+types/about'
-
-export function meta(_: Route.MetaArgs) {
-  return seo({
-    title: 'About',
-    path: '/about',
-    description:
-      'John Dengis — software engineer and former engineering leader, YouTuber, guitarist, and lifelong language learner.',
-  })
-}
 
 const HIGHLIGHTS = [
   {
@@ -43,6 +33,11 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 export default function About() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
+      <Seo
+        title="About"
+        path="/about"
+        description="John Dengis — software engineer and former engineering leader, YouTuber, guitarist, and lifelong language learner."
+      />
       <p className="text-content-muted inline-flex items-center gap-1.5 text-sm">
         <MapPin className="h-4 w-4" /> San Francisco, California
       </p>

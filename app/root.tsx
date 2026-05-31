@@ -1,5 +1,5 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
-
+import { SITE } from '~/lib/site'
 import type { Route } from './+types/root'
 import './app.css'
 
@@ -15,24 +15,6 @@ export const links: Route.LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
-]
-
-const SITE_URL = 'https://john.deng.is'
-
-export const meta: Route.MetaFunction = () => [
-  { title: 'John Dengis — Software auteur, code luthier, music maker' },
-  {
-    name: 'description',
-    content:
-      'Personal site of John Dengis: software engineer and former engineering leader, YouTuber, guitarist, and language learner.',
-  },
-  { property: 'og:type', content: 'website' },
-  { property: 'og:site_name', content: 'John Dengis' },
-  { property: 'og:url', content: SITE_URL },
-  { property: 'og:image', content: `${SITE_URL}/og/default.png` },
-  { name: 'twitter:card', content: 'summary_large_image' },
-  { name: 'twitter:creator', content: '@jadengis' },
-  { name: 'theme-color', content: '#0a0a0b' },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -54,7 +36,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />
+  return (
+    <>
+      {/* Site-wide metadata (React 19 hoists these into <head>). Per-page
+          title/description/OG tags are rendered by <Seo> in each route. */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@jadengis" />
+      <meta property="og:site_name" content={SITE.name} />
+      <meta name="theme-color" content="#0a0a0b" />
+      <Outlet />
+    </>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

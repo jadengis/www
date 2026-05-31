@@ -1,18 +1,10 @@
 import { Rss } from 'lucide-react'
 import { BlogList } from '~/components/blog-list'
+import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 import { IconButton } from '~/components/ui/icon-button'
 import { getAllPosts } from '~/lib/posts'
-import { seo } from '~/lib/seo'
 import type { Route } from './+types/index'
-
-export function meta(_: Route.MetaArgs) {
-  return seo({
-    title: 'Blog',
-    path: '/blog',
-    description: 'Writing by John Dengis on engineering, AI, music, and the craft of making things.',
-  })
-}
 
 export function loader() {
   return { posts: getAllPosts() }
@@ -23,6 +15,11 @@ export default function BlogIndex({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
+      <Seo
+        title="Blog"
+        path="/blog"
+        description="Writing by John Dengis on engineering, AI, music, and the craft of making things."
+      />
       <div className="flex items-end justify-between gap-4">
         <div>
           <h1 className="text-4xl font-black tracking-tight sm:text-5xl">

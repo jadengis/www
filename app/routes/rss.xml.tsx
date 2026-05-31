@@ -23,7 +23,7 @@ export function loader() {
       link: url,
       description: post.description,
       date: new Date(`${post.date}T00:00:00Z`),
-      image: `${SITE.url}${post.heroImage}`,
+      image: `${SITE.url}${post.image.hero}`,
     })
   }
 

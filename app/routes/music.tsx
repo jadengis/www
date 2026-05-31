@@ -1,15 +1,6 @@
 import { GearCard, type Gear } from '~/components/gear-card'
+import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
-import { seo } from '~/lib/seo'
-import type { Route } from './+types/music'
-
-export function meta(_: Route.MetaArgs) {
-  return seo({
-    title: 'Music & Gear',
-    path: '/music',
-    description: 'John Dengis on guitar, tone, and the gear and signal chains he tinkers with.',
-  })
-}
 
 // Placeholder gear — swap images in public/images/gear and refine copy.
 const GEAR: Gear[] = [
@@ -46,6 +37,11 @@ const GEAR: Gear[] = [
 export default function Music() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
+      <Seo
+        title="Music & Gear"
+        path="/music"
+        description="John Dengis on guitar, tone, and the gear and signal chains he tinkers with."
+      />
       <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
         Music &amp; <GradientText>Gear</GradientText>
       </h1>
