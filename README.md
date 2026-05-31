@@ -1,87 +1,82 @@
-# Welcome to React Router!
+# john.deng.is
 
-A modern, production-ready template for building full-stack React applications using React Router.
+The source for [john.deng.is](https://john.deng.is) — the personal site of John Dengis: software engineer and engineering leader, YouTuber, guitarist, and language learner.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Built as a full-stack [React Router v7](https://reactrouter.com/) app with server-side rendering, an MDX-powered blog, and SEO/feed generation, deployed to [Fly.io](https://fly.io).
 
-## Features
+![Screenshot of john.deng.is](docs/screenshot.png)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Tech stack
 
-## Getting Started
+- **[React Router v7](https://reactrouter.com/)** — full-stack framework with SSR enabled
+- **[React 19](https://react.dev/)** + **TypeScript**
+- **[TailwindCSS v4](https://tailwindcss.com/)** — dark mode via `prefers-color-scheme`
+- **[MDX](https://mdxjs.com/)** — blog posts authored in Markdown + JSX, with frontmatter, GFM, autolinked headings, and syntax highlighting via [rehype-pretty-code](https://rehype-pretty.pages.dev/) / [Shiki](https://shiki.style/)
+- **[lucide-react](https://lucide.dev/)** — icons
+- **[feed](https://github.com/jpmonette/feed)** — RSS generation
 
-### Installation
+## Getting started
 
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
+Uses [`pnpm`](https://pnpm.io/) (pinned via `packageManager` in `package.json`; enable with `corepack enable`). Node 24 (see `.tool-versions`).
 
 ```bash
-npm run dev
+pnpm install      # Install dependencies
+pnpm dev          # Start dev server with HMR at http://localhost:5173
+pnpm build        # Production build (outputs to ./build/)
+pnpm start        # Serve the production build
+pnpm typecheck    # Generate React Router types + run TypeScript check
+pnpm format       # Format with Prettier
 ```
 
-Your application will be available at `http://localhost:5173`.
+## Project structure
 
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
 ```
+app/
+├── root.tsx              # HTML document shell, root App, global ErrorBoundary
+├── routes.ts             # Declarative route config
+├── app.css               # Global styles + Tailwind import
+├── routes/               # Route modules (loader / action / meta / component)
+│   ├── layout.tsx        # Shared chrome (header, footer) wrapping page routes
+│   ├── home.tsx          # /
+│   ├── about.tsx         # /about
+│   ├── projects.tsx      # /projects
+│   ├── music.tsx         # /music
+│   ├── blog/             # /blog and /blog/:slug
+│   ├── rss.xml.tsx       # RSS feed (resource route, no layout)
+│   └── sitemap.xml.tsx   # Sitemap (resource route, no layout)
+├── components/           # Reusable components
+│   └── ui/               # Design-system primitives
+├── content/blog/         # Blog posts as .mdx files with frontmatter
+└── lib/                  # Site config, post/project data, helpers
+```
+
+### Routing
+
+Routes are declared in `app/routes.ts`. Page routes are nested under `routes/layout.tsx` for shared chrome; `rss.xml` and `sitemap.xml` are resource routes that return raw XML. The `~/` path alias maps to `app/`.
+
+### Blog
+
+Posts live in `app/content/blog/*.mdx`. Each file carries frontmatter (`title`, `date`, `description`, `image`, `tags`, `published`). `app/lib/posts.ts` reads frontmatter via `import.meta.glob` to build the post list, sorted newest-first. Posts with `published: false` are shown in development but hidden in production. Post images live under `public/images/blog/<slug>/`.
+
+### SEO
+
+Per-page `meta`, JSON-LD structured data (`app/components/jsonld.tsx`), Open Graph images (`public/og/`), `robots.txt`, an RSS feed at `/rss.xml`, and a sitemap at `/sitemap.xml`.
 
 ## Deployment
 
-### Docker Deployment
+The app runs on [Fly.io](https://fly.io) (`fly.toml`, app `john-dengis-www`). The `Dockerfile` is a multi-stage build that installs production deps, builds the app, and serves it with `react-router-serve`.
 
-To build and run using Docker:
+Pushes to `master` trigger the **Deploy** GitHub Actions workflow (`.github/workflows/`), which runs `flyctl deploy --remote-only` and stamps the build with the commit SHA as `RELEASE`. Deploying requires a `FLY_API_TOKEN` repository secret.
+
+To deploy manually:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+fly deploy
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Or build and run the container locally:
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
+```bash
+docker build -t www .
+docker run -p 3000:3000 www
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
