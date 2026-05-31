@@ -5,11 +5,11 @@ import { GradientText } from '~/components/ui/gradient-text'
 // Placeholder gear: swap images in public/images/gear and refine copy.
 const gear: Gear[] = [
   {
-    name: 'The main guitar',
+    name: 'Ibanez RGR5221 Prestige',
     category: 'Guitar',
     image: '/images/gear/guitar.jpg',
     description:
-      'My workhorse electric. Set up for fast, low action and tuned down for the heavier stuff, the instrument most of these ideas start on.',
+      'A Japanese-made Prestige with a Super Wizard neck and 24 jumbo stainless-steel frets, so the action is fast and the playability is effortless. A pair of Bare Knuckle Brute Force humbuckers over a fixed Gibraltar bridge keep it tight and brutal. It shreds like a machine.',
   },
   {
     name: '1978 Fender Deluxe Reverb',
@@ -23,14 +23,14 @@ const gear: Gear[] = [
     category: 'Effects',
     image: '/images/gear/pedalboard.jpg',
     description:
-      'Overdrive into the front end, modulation and delay in the loop. The order matters more than the count. This is where the tone-chasing actually happens.',
+      'A Pedaltrain board with a Voodoo Lab Pedal Power 3. The chain is purposefully all-analog: an Empress Buffer+ (with a TC Electronic PolyTune in its tuner slot) into a Dunlop Cry Baby, a Maxon OD808, the Empress Heavy, a TC Electronic Thunderstorm, and an MXR Carbon Copy Deluxe. Drive and dirt up front, modulation and delay at the end.',
   },
   {
-    name: 'The interface',
+    name: 'Two Notes Torpedo Captor X',
     category: 'Recording',
     image: '/images/gear/interface.jpg',
     description:
-      'Where the rig meets the computer for tracking demos at home. Low latency, clean converters, and a reamp path for fixing tone later.',
+      'A reactive load box and power attenuator that doubles as a capture box, so the Deluxe Reverb can go straight DI into the DAW. A great, versatile tool for a tube-amp lover who still wants to track quietly at home.',
   },
 ]
 
