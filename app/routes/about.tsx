@@ -7,19 +7,19 @@ import { GradientText } from '~/components/ui/gradient-text'
 
 const highlights = [
   {
-    period: '2019 — 2025',
+    period: '2019–2025',
     role: 'Instacart',
     detail:
       'Joined as a founding engineer on the Connect API and grew into engineering leadership, ending as a Senior Engineering Manager leading ~20 engineers across mobile and backend.',
   },
   {
-    period: '2018 — 2019',
+    period: '2018–2019',
     role: 'Coral Health',
     detail:
       'Built a health-records application from the ground up on serverless infrastructure, integrating with 200+ health systems.',
   },
   {
-    period: '2015 — 2018',
+    period: '2015–2018',
     role: 'IBM · Vena Solutions',
     detail:
       'Tuned a high-performance replacement for the IBM java.lang.Math library and the XL compiler, then sped up enterprise software by multiples at Vena.',
@@ -36,7 +36,7 @@ export default function About() {
       <Seo
         title="About"
         path="/about"
-        description="John Dengis — software engineer and former engineering leader, YouTuber, guitarist, and lifelong language learner."
+        description="John Dengis, software engineer and engineering leader, YouTuber, guitarist, and lifelong language learner."
       />
       <p className="text-content-muted inline-flex items-center gap-1.5 text-sm">
         <MapPin className="h-4 w-4" /> San Francisco, California
@@ -49,7 +49,7 @@ export default function About() {
         <p>
           I&apos;m a software engineer with a background in mathematics and physics. I spent the better part of seven
           years at Instacart, where I went from a founding engineer on a new API platform to leading teams as an
-          engineering manager — hiring, growing, and shipping with people I genuinely liked working with.
+          engineering manager, hiring, growing, and shipping with people I genuinely liked working with.
         </p>
         <p>
           What I actually love is making things. Code is the obvious one, but it shows up everywhere: in the kitchen, on

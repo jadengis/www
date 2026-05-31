@@ -17,7 +17,7 @@ const facets = [
   {
     icon: Video,
     title: 'Video',
-    body: 'A YouTube channel of cooking, culture, and travel — stories from life on the move.',
+    body: 'A YouTube channel of cooking, culture, and travel: stories from life on the move.',
   },
   {
     icon: Guitar,
@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo title="John Dengis — Software auteur, code luthier, music maker" path="/" />
+      <Seo title="John Dengis: Software auteur, code luthier, music maker" path="/" />
       <JsonLd data={personLd} />
       <JsonLd data={siteLd} />
 

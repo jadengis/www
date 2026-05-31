@@ -3,7 +3,7 @@ import { SocialLinks } from '~/components/social-links'
 import { Button } from '~/components/ui/button'
 import { site } from '~/lib/site'
 
-/** Full-bleed homepage hero — name over a real background image, never in a card. */
+/** Full-bleed homepage hero: name over a real background image, never in a card. */
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-[86vh] items-center overflow-hidden">
@@ -28,8 +28,8 @@ export function Hero() {
         </h1>
         <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{site.tagline}</p>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-white/65">
-          Software engineer and former engineering leader. I build things, make videos and music, and study languages —
-          usually all at once.
+          Software engineer and engineering leader. I build things, make videos and music, and study languages, usually
+          all at once.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-3">

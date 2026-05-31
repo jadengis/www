@@ -2,28 +2,28 @@ import { GearCard, type Gear } from '~/components/gear-card'
 import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 
-// Placeholder gear — swap images in public/images/gear and refine copy.
+// Placeholder gear: swap images in public/images/gear and refine copy.
 const gear: Gear[] = [
   {
     name: 'The main guitar',
     category: 'Guitar',
     image: '/images/gear/guitar.jpg',
     description:
-      'My workhorse electric. Set up for fast, low action and tuned down for the heavier stuff — the instrument most of these ideas start on.',
+      'My workhorse electric. Set up for fast, low action and tuned down for the heavier stuff, the instrument most of these ideas start on.',
   },
   {
-    name: 'The amp',
+    name: '1978 Fender Deluxe Reverb',
     category: 'Amplification',
     image: '/images/gear/amp.jpg',
     description:
-      "A high-gain tube amp that stays tight at volume. Run mostly on the dirty channel with the gain lower than you'd expect.",
+      'A silverface tube amp in great shape, with crystal-clear cleans and lush analog reverb. A wonderfully versatile platform for a diverse set of tones.',
   },
   {
     name: 'The pedalboard',
     category: 'Effects',
     image: '/images/gear/pedalboard.jpg',
     description:
-      'Overdrive into the front end, modulation and delay in the loop. The order matters more than the count — this is where the tone-chasing actually happens.',
+      'Overdrive into the front end, modulation and delay in the loop. The order matters more than the count. This is where the tone-chasing actually happens.',
   },
   {
     name: 'The interface',
@@ -46,7 +46,7 @@ export default function Music() {
         Music &amp; <GradientText>Gear</GradientText>
       </h1>
       <p className="text-content-muted mt-4 max-w-2xl text-lg">
-        I&apos;ve played in bands — including a progressive metal project — and I still play guitar most days. A lot of
+        I&apos;ve played in bands, including a progressive metal project, and I still play guitar most days. A lot of
         the fun is in the gear: the instruments, the amps, and the order things sit in the signal chain.
       </p>
 
@@ -57,7 +57,7 @@ export default function Music() {
       </div>
 
       <p className="text-content-muted mt-10 text-sm">
-        Photos and specs are placeholders for now — the real rig shots are coming.
+        Photos and specs are placeholders for now. The real rig shots are coming.
       </p>
     </div>
   )

@@ -5,7 +5,7 @@ export const site = {
   url: 'https://john.deng.is',
   tagline: 'Software auteur · Code luthier · Music maker · Animal custodian',
   description:
-    'Personal site of John Dengis: software engineer and former engineering leader, YouTuber, guitarist, and language learner.',
+    'Personal site of John Dengis: software engineer and engineering leader, YouTuber, guitarist, and language learner.',
   email: 'john@deng.is',
 } as const
 

@@ -13,7 +13,7 @@ export type PostMeta = {
 
 type Frontmatter = Omit<PostMeta, 'slug'>
 
-// Frontmatter only — keeps post bodies out of any bundle that just needs the list.
+// Frontmatter only: keeps post bodies out of any bundle that just needs the list.
 const frontmatters = import.meta.glob<Frontmatter>('../content/blog/*.mdx', {
   eager: true,
   import: 'frontmatter',

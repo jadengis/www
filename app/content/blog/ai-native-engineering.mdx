@@ -1,7 +1,7 @@
 ---
 title: Notes on building AI-native, for engineers who were skeptical
 date: '2026-05-18'
-description: A few hard-won lessons from shipping products where a model sits in the critical path — written for engineers who, like me, started out unconvinced.
+description: A few hard-won lessons from shipping products where a model sits in the critical path, written for engineers who, like me, started out unconvinced.
 image:
   hero: /images/blog/ai-native-engineering/hero.jpg
   thumbnail: /images/blog/ai-native-engineering/thumb.jpg
@@ -15,7 +15,7 @@ pinned forever. That determinism is the thing I loved about the job. So when
 the work shifted to putting a language model in the critical path, my first
 reaction was suspicion.
 
-A year of doing it changed my mind — not about the determinism, which is real
+A year of doing it changed my mind, not about the determinism, which is real
 and which you give up, but about whether the tradeoff is worth it. Here are the
 notes I wish someone had handed me at the start.
 
@@ -50,7 +50,7 @@ confident intern, and you would not merge an intern's PR without CI.
 
 You cannot unit-test "did it understand the email," but you can build a small,
 honest set of labeled examples and measure against it on every change. The set
-does not need to be big to be useful — a few dozen real cases caught more
+does not need to be big to be useful: a few dozen real cases caught more
 regressions for us than any amount of staring at outputs by hand.
 
 ## The unglamorous parts still win
@@ -61,5 +61,5 @@ plumbing it always was. If anything, AI raises the bar: failures are softer and
 weirder, so your instrumentation has to be better than you're used to.
 
 None of this made me love nondeterminism. It did convince me that, handled like
-an engineer rather than a magician, it's just another component with a spec —
+an engineer rather than a magician, it's just another component with a spec,
 one that happens to be unusually good at language.

@@ -3,7 +3,7 @@ import { site } from '~/lib/site'
 type SeoProps = {
   title: string
   description?: string
-  /** Path beginning with "/" — used for canonical + og:url. */
+  /** Path beginning with "/", used for canonical + og:url. */
   path?: string
   image?: string
   type?: 'website' | 'article'
@@ -22,7 +22,7 @@ export function Seo({
   type = 'website',
 }: SeoProps) {
   const url = `${site.url}${path}`
-  const fullTitle = path === '/' ? title : `${title} — ${site.name}`
+  const fullTitle = path === '/' ? title : `${title} | ${site.name}`
 
   return (
     <>

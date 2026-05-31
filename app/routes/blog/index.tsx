@@ -26,7 +26,7 @@ export default function BlogIndex({ loaderData }: Route.ComponentProps) {
             The <GradientText>Blog</GradientText>
           </h1>
           <p className="text-content-muted mt-4 max-w-xl text-lg">
-            Notes on engineering, AI, music, and making things — usually with a tangent or two.
+            Notes on engineering, AI, music, and making things, usually with a tangent or two.
           </p>
         </div>
         <IconButton label="RSS feed" href="/rss.xml">
@@ -38,7 +38,7 @@ export default function BlogIndex({ loaderData }: Route.ComponentProps) {
         {posts.length > 0 ? (
           <BlogList posts={posts} />
         ) : (
-          <p className="text-content-muted">No posts yet — check back soon.</p>
+          <p className="text-content-muted">No posts yet, check back soon.</p>
         )}
       </div>
     </div>

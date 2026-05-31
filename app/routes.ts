@@ -9,7 +9,7 @@ export default [
     route('blog/:slug', 'routes/blog/post.tsx'),
     route('music', 'routes/music.tsx'),
   ]),
-  // Resource routes — raw XML, no layout chrome.
+  // Resource routes: raw XML, no layout chrome.
   route('rss.xml', 'routes/rss.xml.tsx'),
   route('sitemap.xml', 'routes/sitemap.xml.tsx'),
 ] satisfies RouteConfig

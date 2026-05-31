@@ -14,7 +14,7 @@ export type Project = {
   color: string
 }
 
-/** Curated set — select open-source repos + the YouTube channel. (No Underflow.) */
+/** Curated set: select open-source repos + the YouTube channel. (No Underflow.) */
 export const projects: Project[] = [
   {
     name: 'ngx-clarity',
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   },
   {
     name: 'ng-helmet',
-    description: 'A document-head manager for Angular — declarative title and meta tags per route.',
+    description: 'A document-head manager for Angular: declarative title and meta tags per route.',
     href: 'https://github.com/jadengis/ng-helmet',
     kind: 'repo',
     language: 'TypeScript',
@@ -66,7 +66,7 @@ export const projects: Project[] = [
   },
   {
     name: 'JohnDengisYT',
-    description: 'My YouTube channel — cooking, culture, and travel videos from life on the move.',
+    description: 'My YouTube channel: cooking, culture, and travel videos from life on the move.',
     href: 'https://www.youtube.com/@JohnDengisYT',
     kind: 'channel',
     color: '#ff0000',
