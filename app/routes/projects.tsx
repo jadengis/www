@@ -1,7 +1,7 @@
 import { ProjectCard } from '~/components/project-card'
 import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
-import { PROJECTS } from '~/lib/projects'
+import { projects } from '~/lib/projects'
 
 export default function Projects() {
   return (
@@ -20,7 +20,7 @@ export default function Projects() {
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((p) => (
+        {projects.map((p) => (
           <ProjectCard key={p.name} project={p} />
         ))}
       </div>

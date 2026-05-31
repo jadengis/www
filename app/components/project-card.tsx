@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { SocialIcon } from '~/components/ui/social-icon'
-import { LANGUAGE_COLORS, type Project } from '~/lib/projects'
+import { languageColors, type Project } from '~/lib/projects'
 
 function Avatar({ project }: { project: Project }) {
   if (project.kind === 'channel') {
@@ -46,7 +46,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <span className="inline-flex items-center gap-1.5">
             <span
               className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: LANGUAGE_COLORS[project.language] ?? project.color }}
+              style={{ backgroundColor: languageColors[project.language] ?? project.color }}
             />
             {project.language}
           </span>

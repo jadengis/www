@@ -1,7 +1,7 @@
 import { Rss } from 'lucide-react'
 import { Link } from 'react-router'
 import { SocialLinks } from '~/components/social-links'
-import { NAV, SITE } from '~/lib/site'
+import { nav, site } from '~/lib/site'
 
 export function Footer() {
   return (
@@ -9,9 +9,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-12 sm:grid-cols-[1fr_auto]">
         <div className="space-y-3">
           <Link to="/" className="text-lg font-bold tracking-tight">
-            {SITE.name}
+            {site.name}
           </Link>
-          <p className="text-content-muted max-w-xs text-sm">{SITE.tagline}</p>
+          <p className="text-content-muted max-w-xs text-sm">{site.tagline}</p>
           <SocialLinks />
         </div>
 
@@ -23,7 +23,7 @@ export function Footer() {
                 Home
               </Link>
             </li>
-            {NAV.map((item) => (
+            {nav.map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="text-content-muted hover:text-accent">
                   {item.label}
@@ -44,7 +44,7 @@ export function Footer() {
 
       <div className="border-edge border-t">
         <p className="text-content-muted mx-auto max-w-5xl px-6 py-6 text-xs">
-          © {new Date().getFullYear()} {SITE.name}.
+          © {new Date().getFullYear()} {site.name}.
         </p>
       </div>
     </footer>

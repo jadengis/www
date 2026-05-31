@@ -3,7 +3,7 @@ import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 
 // Placeholder gear — swap images in public/images/gear and refine copy.
-const GEAR: Gear[] = [
+const gear: Gear[] = [
   {
     name: 'The main guitar',
     category: 'Guitar',
@@ -51,7 +51,7 @@ export default function Music() {
       </p>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
-        {GEAR.map((g) => (
+        {gear.map((g) => (
           <GearCard key={g.name} gear={g} />
         ))}
       </div>

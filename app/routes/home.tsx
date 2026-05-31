@@ -5,10 +5,10 @@ import { JsonLd } from '~/components/jsonld'
 import { ProjectCard } from '~/components/project-card'
 import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
-import { PROJECTS } from '~/lib/projects'
-import { SITE, SOCIALS } from '~/lib/site'
+import { projects } from '~/lib/projects'
+import { site, socials } from '~/lib/site'
 
-const FACETS = [
+const facets = [
   {
     icon: Code2,
     title: 'Engineering',
@@ -32,22 +32,22 @@ const FACETS = [
 ]
 
 export default function Home() {
-  const featured = PROJECTS.slice(0, 3)
+  const featured = projects.slice(0, 3)
 
   const personLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: SITE.name,
-    url: SITE.url,
+    name: site.name,
+    url: site.url,
     jobTitle: 'Software Engineer',
-    description: SITE.description,
-    sameAs: SOCIALS.map((s) => s.href),
+    description: site.description,
+    sameAs: socials.map((s) => s.href),
   }
   const siteLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: SITE.name,
-    url: SITE.url,
+    name: site.name,
+    url: site.url,
   }
 
   return (
@@ -64,7 +64,7 @@ export default function Home() {
           A few things I <GradientText>care about</GradientText>
         </h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {FACETS.map(({ icon: Icon, title, body }) => (
+          {facets.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
               className="group border-edge bg-surface-2 hover:border-accent rounded-lg border p-6 transition-colors"

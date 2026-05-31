@@ -1,5 +1,5 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 import type { Route } from './+types/root'
 import './app.css'
 
@@ -42,7 +42,7 @@ export default function App() {
           title/description/OG tags are rendered by <Seo> in each route. */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@jadengis" />
-      <meta property="og:site_name" content={SITE.name} />
+      <meta property="og:site_name" content={site.name} />
       <meta name="theme-color" content="#0a0a0b" />
       <Outlet />
     </>

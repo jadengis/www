@@ -1,13 +1,13 @@
 import { getAllPosts } from '~/lib/posts'
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 
-const STATIC_PATHS = ['/', '/about', '/projects', '/blog', '/music']
+const staticPaths = ['/', '/about', '/projects', '/blog', '/music']
 
 export function loader() {
   const entries = [
-    ...STATIC_PATHS.map((p) => ({ loc: `${SITE.url}${p}`, lastmod: '' })),
+    ...staticPaths.map((p) => ({ loc: `${site.url}${p}`, lastmod: '' })),
     ...getAllPosts().map((post) => ({
-      loc: `${SITE.url}/blog/${post.slug}`,
+      loc: `${site.url}/blog/${post.slug}`,
       lastmod: post.date,
     })),
   ]

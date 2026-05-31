@@ -1,4 +1,4 @@
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 
 type SeoProps = {
   title: string
@@ -16,13 +16,13 @@ type SeoProps = {
  */
 export function Seo({
   title,
-  description = SITE.description,
+  description = site.description,
   path = '/',
-  image = `${SITE.url}/og/default.png`,
+  image = `${site.url}/og/default.png`,
   type = 'website',
 }: SeoProps) {
-  const url = `${SITE.url}${path}`
-  const fullTitle = path === '/' ? title : `${title} — ${SITE.name}`
+  const url = `${site.url}${path}`
+  const fullTitle = path === '/' ? title : `${title} — ${site.name}`
 
   return (
     <>

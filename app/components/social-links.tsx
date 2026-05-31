@@ -1,6 +1,6 @@
 import { SocialIcon } from '~/components/ui/social-icon'
 import { cn } from '~/lib/cn'
-import { SOCIALS } from '~/lib/site'
+import { socials } from '~/lib/site'
 
 /** Row of social links with brand icons. Set `onDark` when placed over a dark image. */
 export function SocialLinks({
@@ -14,7 +14,7 @@ export function SocialLinks({
 }) {
   return (
     <ul className={cn('flex items-center gap-2', className)}>
-      {SOCIALS.map((s) => (
+      {socials.map((s) => (
         <li key={s.name}>
           <a
             href={s.href}

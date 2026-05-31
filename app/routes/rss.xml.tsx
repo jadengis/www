@@ -1,29 +1,29 @@
 import { Feed } from 'feed'
 import { getAllPosts } from '~/lib/posts'
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 
 export function loader() {
   const feed = new Feed({
-    title: SITE.name,
-    description: SITE.description,
-    id: SITE.url,
-    link: SITE.url,
+    title: site.name,
+    description: site.description,
+    id: site.url,
+    link: site.url,
     language: 'en',
-    favicon: `${SITE.url}/favicon.ico`,
-    copyright: `© ${new Date().getFullYear()} ${SITE.name}`,
-    feedLinks: { rss: `${SITE.url}/rss.xml` },
-    author: { name: SITE.name, link: SITE.url },
+    favicon: `${site.url}/favicon.ico`,
+    copyright: `© ${new Date().getFullYear()} ${site.name}`,
+    feedLinks: { rss: `${site.url}/rss.xml` },
+    author: { name: site.name, link: site.url },
   })
 
   for (const post of getAllPosts()) {
-    const url = `${SITE.url}/blog/${post.slug}`
+    const url = `${site.url}/blog/${post.slug}`
     feed.addItem({
       title: post.title,
       id: url,
       link: url,
       description: post.description,
       date: new Date(`${post.date}T00:00:00Z`),
-      image: `${SITE.url}${post.image.hero}`,
+      image: `${site.url}${post.image.hero}`,
     })
   }
 

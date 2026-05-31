@@ -2,7 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import { cn } from '~/lib/cn'
-import { NAV, SITE } from '~/lib/site'
+import { nav, site } from '~/lib/site'
 
 function Brand({ onClick }: { onClick?: () => void }) {
   return (
@@ -10,7 +10,7 @@ function Brand({ onClick }: { onClick?: () => void }) {
       <span className="bg-chromatic animate-shimmer flex h-8 w-8 items-center justify-center rounded-md text-sm font-black text-white">
         JD
       </span>
-      <span className="text-content">{SITE.name}</span>
+      <span className="text-content">{site.name}</span>
     </Link>
   )
 }
@@ -30,7 +30,7 @@ export function Header() {
         <Brand />
 
         <ul className="hidden items-center gap-8 md:flex">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <li key={item.to}>
               <NavLink to={item.to} className={linkClass}>
                 {item.label}
@@ -52,7 +52,7 @@ export function Header() {
 
       {open && (
         <ul className="border-edge flex flex-col gap-1 border-t px-6 py-4 md:hidden">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <li key={item.to}>
               <NavLink
                 to={item.to}

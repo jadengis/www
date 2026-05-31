@@ -6,7 +6,7 @@ import { PostMeta } from '~/components/post-meta'
 import { Seo } from '~/components/seo'
 import { Prose } from '~/components/ui/prose'
 import type { PostMeta as Post } from '~/lib/posts'
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 import type { Route } from './+types/post'
 
 type Frontmatter = Omit<Post, 'slug'>
@@ -45,13 +45,13 @@ export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
     '@type': 'BlogPosting',
     headline: meta.title,
     description: meta.description,
-    image: `${SITE.url}${meta.image.hero}`,
+    image: `${site.url}${meta.image.hero}`,
     datePublished: meta.date,
     dateModified: meta.date,
     keywords: meta.tags.join(', '),
-    author: { '@type': 'Person', name: SITE.name, url: SITE.url },
-    publisher: { '@type': 'Person', name: SITE.name },
-    mainEntityOfPage: `${SITE.url}/blog/${meta.slug}`,
+    author: { '@type': 'Person', name: site.name, url: site.url },
+    publisher: { '@type': 'Person', name: site.name },
+    mainEntityOfPage: `${site.url}/blog/${meta.slug}`,
   }
 
   return (
@@ -60,7 +60,7 @@ export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
         title={meta.title}
         description={meta.description}
         path={`/blog/${meta.slug}`}
-        image={`${SITE.url}${meta.image.hero}`}
+        image={`${site.url}${meta.image.hero}`}
         type="article"
       />
       <JsonLd data={articleLd} />

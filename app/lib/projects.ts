@@ -1,5 +1,5 @@
 /** GitHub "linguist" colors, so language dots match what GitHub shows. */
-export const LANGUAGE_COLORS: Record<string, string> = {
+export const languageColors: Record<string, string> = {
   TypeScript: '#3178c6',
   Elixir: '#6e4a7e',
 }
@@ -15,7 +15,7 @@ export type Project = {
 }
 
 /** Curated set — select open-source repos + the YouTube channel. (No Underflow.) */
-export const PROJECTS: Project[] = [
+export const projects: Project[] = [
   {
     name: 'ngx-clarity',
     description: 'Angular module that drops Microsoft Clarity analytics into an app with a single import.',

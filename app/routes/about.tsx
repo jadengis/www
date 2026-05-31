@@ -5,7 +5,7 @@ import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { GradientText } from '~/components/ui/gradient-text'
 
-const HIGHLIGHTS = [
+const highlights = [
   {
     period: '2019 — 2025',
     role: 'Instacart',
@@ -69,7 +69,7 @@ export default function About() {
       <section className="mt-16">
         <SectionTitle>Selected experience</SectionTitle>
         <ol className="border-edge space-y-6 border-l pl-6">
-          {HIGHLIGHTS.map((h) => (
+          {highlights.map((h) => (
             <li key={h.role} className="relative">
               <span className="bg-blood absolute top-1.5 -left-[1.6rem] h-2.5 w-2.5 rounded-full" />
               <p className="text-content-muted text-sm">{h.period}</p>

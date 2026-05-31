@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { SocialLinks } from '~/components/social-links'
 import { Button } from '~/components/ui/button'
-import { SITE } from '~/lib/site'
+import { site } from '~/lib/site'
 
 /** Full-bleed homepage hero — name over a real background image, never in a card. */
 export function Hero() {
@@ -26,7 +26,7 @@ export function Hero() {
         <h1 className="max-w-3xl text-5xl font-black tracking-tight text-white sm:text-7xl">
           John <span className="text-gradient animate-shimmer bg-chromatic">Dengis</span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{SITE.tagline}</p>
+        <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{site.tagline}</p>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-white/65">
           Software engineer and former engineering leader. I build things, make videos and music, and study languages —
           usually all at once.
