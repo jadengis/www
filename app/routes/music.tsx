@@ -7,28 +7,28 @@ const gear: Gear[] = [
   {
     name: 'Ibanez RGR5221 Prestige',
     category: 'Guitar',
-    image: '/images/gear/guitar.jpg',
+    image: '/images/gear/guitar.webp',
     description:
       'A Japanese-made Prestige with a Super Wizard neck and 24 jumbo stainless-steel frets, so the action is fast and the playability is effortless. A pair of Bare Knuckle Brute Force humbuckers over a fixed Gibraltar bridge keep it tight and brutal. It shreds like a machine.',
   },
   {
     name: '1978 Fender Deluxe Reverb',
     category: 'Amplification',
-    image: '/images/gear/amp.jpg',
+    image: '/images/gear/amp.webp',
     description:
       'A silverface tube amp in great shape, with crystal-clear cleans and lush analog reverb. A wonderfully versatile platform for a diverse set of tones.',
   },
   {
     name: 'The pedalboard',
     category: 'Effects',
-    image: '/images/gear/pedalboard.jpg',
+    image: '/images/gear/pedalboard.webp',
     description:
       'A Pedaltrain board with a Voodoo Lab Pedal Power 3. The chain is purposefully all-analog: an Empress Buffer+ (with a TC Electronic PolyTune in its tuner slot) into a Dunlop Cry Baby, a Maxon OD808, the Empress Heavy, a TC Electronic Thunderstorm, and an MXR Carbon Copy Deluxe. Drive and dirt up front, modulation and delay at the end.',
   },
   {
     name: 'Two Notes Torpedo Captor X',
     category: 'Recording',
-    image: '/images/gear/interface.jpg',
+    image: '/images/gear/interface.webp',
     description:
       'A reactive load box and power attenuator that doubles as a capture box, so the Deluxe Reverb can go straight DI into the DAW. A great, versatile tool for a tube-amp lover who still wants to track quietly at home.',
   },

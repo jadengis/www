@@ -5,40 +5,37 @@ import { JsonLd } from '~/components/jsonld'
 import { PostMeta } from '~/components/post-meta'
 import { Seo } from '~/components/seo'
 import { Prose } from '~/components/ui/prose'
-import type { PostMeta as Post } from '~/lib/posts'
+import { parsePostPath, type PostMeta as Post } from '~/lib/posts'
 import { site } from '~/lib/site'
 import type { Route } from './+types/post'
 
-type Frontmatter = Omit<Post, 'slug'>
+type Frontmatter = Omit<Post, 'slug' | 'date'>
 type PostModule = { default: ComponentType; frontmatter: Frontmatter }
 
 // Eager glob lives in the route module (not a loader) so the MDX component is
 // available for SSR + hydration. Bodies only bundle into this route's chunk.
-const modules = import.meta.glob<PostModule>('../../content/blog/*.mdx', {
+const modules = import.meta.glob<PostModule>('../../content/blog/**/*.mdx', {
   eager: true,
 })
 
-const bySlug = new Map<string, PostModule>(
-  Object.entries(modules).map(([path, mod]) => [
-    path
-      .split('/')
-      .pop()!
-      .replace(/\.mdx$/, ''),
-    mod,
-  ]),
+const bySlug = new Map(
+  Object.entries(modules).map(([path, mod]) => {
+    const { slug, date } = parsePostPath(path)
+    return [slug, { mod, date }] as const
+  }),
 )
 
 export function loader({ params }: Route.LoaderArgs) {
-  const mod = bySlug.get(params.slug)
-  if (!mod || (!mod.frontmatter.published && import.meta.env.PROD)) {
+  const entry = bySlug.get(params.slug)
+  if (!entry || (!entry.mod.frontmatter.published && import.meta.env.PROD)) {
     throw new Response('Not found', { status: 404 })
   }
-  return { meta: { slug: params.slug, ...mod.frontmatter } satisfies Post }
+  return { meta: { slug: params.slug, date: entry.date, ...entry.mod.frontmatter } satisfies Post }
 }
 
 export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
   const { meta } = loaderData
-  const Body = bySlug.get(params.slug)!.default
+  const Body = bySlug.get(params.slug)!.mod.default
 
   const articleLd = {
     '@context': 'https://schema.org',

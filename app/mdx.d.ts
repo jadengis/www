@@ -4,7 +4,6 @@ declare module '*.mdx' {
   /** Frontmatter exposed by remark-mdx-frontmatter. */
   export const frontmatter: {
     title: string
-    date: string
     description: string
     image: {
       hero: string
