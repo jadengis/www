@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1
-ARG NODE_VERSION=24
+ARG NODE_VERSION=26
 ARG RELEASE="unset"
 
 FROM node:${NODE_VERSION}-alpine AS base
@@ -11,7 +11,8 @@ ENV NODE_ENV=production
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
 # Activate pnpm via corepack (version pinned by package.json "packageManager").
-RUN corepack enable
+# Node 26 no longer bundles corepack, so install it before enabling.
+RUN npm install -g corepack@latest && corepack enable
 
 FROM base AS development-dependencies-env
 COPY . /app

@@ -17,7 +17,7 @@ Built as a full-stack [React Router v7](https://reactrouter.com/) app with serve
 
 ## Getting started
 
-Uses [`pnpm`](https://pnpm.io/) (pinned via `packageManager` in `package.json`; enable with `corepack enable`). Node 24 (see `.tool-versions`).
+Uses [`pnpm`](https://pnpm.io/) (pinned via `packageManager` in `package.json`; enable with `corepack enable`). Node 26 (see `.tool-versions`).
 
 ```bash
 pnpm install      # Install dependencies
