@@ -1,20 +1,13 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import { Footer } from '~/components/footer'
+import { Header } from '~/components/header'
 import { site } from '~/lib/site'
 import type { Route } from './+types/root'
 import './app.css'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
-  },
+  { rel: 'alternate', type: 'application/rss+xml', title: `${site.name} — RSS`, href: '/rss.xml' },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -63,17 +56,24 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-4 px-6 text-center">
-      <p className="text-gradient text-7xl font-black tracking-tight">{message}</p>
-      <p className="text-content-muted text-lg">{details}</p>
-      <a href="/" className="text-accent mt-2 font-semibold underline-offset-4 hover:underline">
-        Back home
-      </a>
-      {stack && (
-        <pre className="border-edge bg-surface-2 mt-4 w-full overflow-x-auto rounded-lg border p-4 text-left text-sm">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    // The root boundary renders outside routes/layout.tsx, so it brings its
+    // own chrome to avoid a dead-end page.
+    <div className="flex min-h-screen flex-col">
+      <title>{`${message === '404' ? 'Page not found' : 'Error'} | ${site.name}`}</title>
+      <Header />
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-4 px-6 py-24 text-center">
+        <p className="text-gradient text-7xl font-black tracking-tight">{message}</p>
+        <p className="text-content-muted text-lg">{details}</p>
+        <a href="/" className="text-accent mt-2 font-semibold underline-offset-4 hover:underline">
+          Back home
+        </a>
+        {stack && (
+          <pre className="border-edge bg-surface-2 mt-4 w-full overflow-x-auto rounded-lg border p-4 text-left text-sm">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+      <Footer />
+    </div>
   )
 }

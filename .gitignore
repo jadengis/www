@@ -5,3 +5,6 @@
 # React Router
 /.react-router/
 /build/
+
+# Generated OG cards (scripts/generate-og.mts)
+/public/og/blog/

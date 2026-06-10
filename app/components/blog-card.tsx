@@ -40,7 +40,7 @@ export function BlogCard({ post, index }: { post: Post; index: number }) {
 
         {/* Content */}
         <div className={cn('flex flex-col justify-center gap-3 p-7', imageRight ? 'sm:order-1' : 'sm:order-2')}>
-          <PostMeta date={post.date} tags={post.tags} />
+          <PostMeta date={post.date} tags={post.tags} readingTime={post.readingTime} />
           <h2 className="group-hover:text-gradient text-2xl font-bold tracking-tight transition-colors">
             {post.title}
           </h2>

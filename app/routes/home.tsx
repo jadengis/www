@@ -6,7 +6,13 @@ import { ProjectCard } from '~/components/project-card'
 import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 import { projects } from '~/lib/projects'
-import { site, socials } from '~/lib/site'
+import { personJsonLd, site } from '~/lib/site'
+import type { Route } from './+types/home'
+
+export const links: Route.LinksFunction = () => [
+  // The hero background is this page's LCP element; fetch it ahead of render.
+  { rel: 'preload', as: 'image', href: '/images/hero.jpg', fetchPriority: 'high' },
+]
 
 const facets = [
   {
@@ -36,12 +42,7 @@ export default function Home() {
 
   const personLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: site.name,
-    url: site.url,
-    jobTitle: 'Software Engineer',
-    description: site.description,
-    sameAs: socials.map((s) => s.href),
+    ...personJsonLd,
   }
   const siteLd = {
     '@context': 'https://schema.org',

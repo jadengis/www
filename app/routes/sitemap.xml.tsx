@@ -1,4 +1,4 @@
-import { getAllPosts } from '~/lib/posts'
+import { getAllPosts, getAllTags, getPostsByTag } from '~/lib/posts'
 import { site } from '~/lib/site'
 
 const staticPaths = ['/', '/about', '/projects', '/blog', '/music']
@@ -8,8 +8,16 @@ export function loader() {
     ...staticPaths.map((p) => ({ loc: `${site.url}${p}`, lastmod: '' })),
     ...getAllPosts().map((post) => ({
       loc: `${site.url}/blog/${post.slug}`,
-      lastmod: post.date,
+      lastmod: post.updated ?? post.date,
     })),
+    // Tag pages, freshest post in the tag as lastmod (posts come newest first).
+    ...getAllTags().map((tag) => {
+      const [newest] = getPostsByTag(tag)
+      return {
+        loc: `${site.url}/blog/tags/${tag}`,
+        lastmod: newest.updated ?? newest.date,
+      }
+    }),
   ]
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

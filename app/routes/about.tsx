@@ -1,9 +1,11 @@
 import { Cat, Dog, Download, MapPin } from 'lucide-react'
+import { JsonLd } from '~/components/jsonld'
 import { Seo } from '~/components/seo'
 import { SocialLinks } from '~/components/social-links'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { GradientText } from '~/components/ui/gradient-text'
+import { personJsonLd } from '~/lib/site'
 
 const highlights = [
   {
@@ -37,6 +39,13 @@ export default function About() {
         title="About"
         path="/about"
         description="John Dengis, software engineer and engineering leader, YouTuber, guitarist, and lifelong language learner."
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          mainEntity: personJsonLd,
+        }}
       />
       <p className="text-content-muted inline-flex items-center gap-1.5 text-sm">
         <MapPin className="h-4 w-4" /> San Francisco, California

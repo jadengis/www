@@ -2,7 +2,6 @@ import { GearCard, type Gear } from '~/components/gear-card'
 import { Seo } from '~/components/seo'
 import { GradientText } from '~/components/ui/gradient-text'
 
-// Placeholder gear: swap images in public/images/gear and refine copy.
 const gear: Gear[] = [
   {
     name: 'Ibanez RGR5221 Prestige',
@@ -55,10 +54,6 @@ export default function Music() {
           <GearCard key={g.name} gear={g} />
         ))}
       </div>
-
-      <p className="text-content-muted mt-10 text-sm">
-        Photos and specs are placeholders for now. The real rig shots are coming.
-      </p>
     </div>
   )
 }
