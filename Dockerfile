@@ -20,7 +20,7 @@ WORKDIR /app
 RUN pnpm install --frozen-lockfile
 
 FROM base AS production-dependencies-env
-COPY ./package.json ./pnpm-lock.yaml ./.pnpmfile.cjs /app/
+COPY ./package.json ./pnpm-lock.yaml ./.pnpmfile.mjs /app/
 WORKDIR /app
 RUN pnpm install --prod --frozen-lockfile
 
@@ -31,7 +31,7 @@ WORKDIR /app
 RUN pnpm run build
 
 FROM base
-COPY ./package.json ./pnpm-lock.yaml ./.pnpmfile.cjs /app/
+COPY ./package.json ./pnpm-lock.yaml ./.pnpmfile.mjs /app/
 COPY --from=production-dependencies-env /app/node_modules /app/node_modules
 COPY --from=build-env /app/build /app/build
 WORKDIR /app
