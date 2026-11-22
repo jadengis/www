@@ -6,7 +6,9 @@ import type { Route } from './+types/root'
 import './app.css'
 
 export const links: Route.LinksFunction = () => [
-  { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+  { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
   { rel: 'alternate', type: 'application/rss+xml', title: `${site.name} — RSS`, href: '/rss.xml' },
 ]
 
@@ -36,7 +38,8 @@ export default function App() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@jadengis" />
       <meta property="og:site_name" content={site.name} />
-      <meta name="theme-color" content="#0a0a0b" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0b0c" />
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfb" />
       <Outlet />
     </>
   )
@@ -62,9 +65,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       <title>{`${message === '404' ? 'Page not found' : 'Error'} | ${site.name}`}</title>
       <Header />
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-4 px-6 py-24 text-center">
-        <p className="text-gradient text-7xl font-black tracking-tight">{message}</p>
+        <p className="font-display text-accent text-8xl leading-none">{message}</p>
         <p className="text-content-muted text-lg">{details}</p>
-        <a href="/" className="text-accent mt-2 font-semibold underline-offset-4 hover:underline">
+        <a href="/" className="text-accent mt-2 underline decoration-1 underline-offset-4 hover:decoration-2">
           Back home
         </a>
         {stack && (

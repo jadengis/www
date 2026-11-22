@@ -2,24 +2,26 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { cn } from '~/lib/cn'
 
-type Variant = 'solid' | 'outline' | 'ghost' | 'gradient'
+type Variant = 'solid' | 'outline' | 'link'
 type Size = 'sm' | 'md' | 'lg'
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50'
 
 const variants: Record<Variant, string> = {
-  solid: 'bg-blood text-white hover:bg-blood-bright shadow-sm hover:shadow-[0_0_24px_-4px_var(--color-blood)]',
-  outline: 'border border-edge text-content hover:border-accent hover:text-accent',
-  ghost: 'text-content hover:bg-surface-2',
-  gradient: 'gradient-border text-content hover:text-accent hover:-translate-y-0.5',
+  solid: 'rounded-md bg-accent text-on-accent hover:bg-content hover:text-surface',
+  outline: 'rounded-md border border-edge text-content hover:border-content',
+  link: 'text-accent underline decoration-1 underline-offset-4 hover:decoration-2',
 }
 
 const sizes: Record<Size, string> = {
   sm: 'h-9 px-3.5 text-sm',
-  md: 'h-11 px-5 text-sm',
-  lg: 'h-12 px-6 text-base',
+  md: 'h-10 px-4 text-sm',
+  lg: 'h-11 px-5 text-base',
 }
+
+// The link variant sits inline with text, so it takes no box size.
+const linkSize = 'text-[length:inherit]'
 
 type CommonProps = {
   variant?: Variant
@@ -43,7 +45,7 @@ type ExternalLinkProps = CommonProps & {
 type Props = ButtonProps | InternalLinkProps | ExternalLinkProps
 
 export function Button({ variant = 'solid', size = 'md', className, children, ...props }: Props) {
-  const classes = cn(base, variants[variant], sizes[size], className)
+  const classes = cn(base, variants[variant], variant === 'link' ? linkSize : sizes[size], className)
 
   if ('to' in props && props.to !== undefined) {
     const { to, ...rest } = props

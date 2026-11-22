@@ -73,11 +73,11 @@ export default function BlogPost({ loaderData, params }: Route.ComponentProps) {
         <div className="mx-auto max-w-3xl px-6 pt-16 pb-12">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
+            className="inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" /> All posts
           </Link>
-          <h1 className="mt-6 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-5xl">{meta.title}</h1>
+          <h1 className="mt-6 max-w-2xl text-4xl leading-tight text-white sm:text-6xl">{meta.title}</h1>
           <PostMeta
             date={meta.date}
             tags={meta.tags}

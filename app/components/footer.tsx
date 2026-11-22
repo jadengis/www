@@ -1,51 +1,20 @@
 import { Rss } from 'lucide-react'
-import { Link } from 'react-router'
 import { SocialLinks } from '~/components/social-links'
-import { nav, site } from '~/lib/site'
+import { site } from '~/lib/site'
 
 export function Footer() {
   return (
     <footer className="border-edge mt-24 border-t">
-      <div className="mx-auto grid max-w-5xl gap-10 px-6 py-12 sm:grid-cols-[1fr_auto]">
-        <div className="space-y-3">
-          <Link to="/" className="text-lg font-bold tracking-tight">
-            {site.name}
-          </Link>
-          <p className="text-content-muted max-w-xs text-sm">{site.tagline}</p>
-          <SocialLinks />
+      <div className="text-content-muted mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-4 px-6 py-8 text-sm">
+        <SocialLinks bare iconClassName="h-4 w-4" className="-ml-3 gap-0" />
+        <div className="flex items-center gap-5 font-mono text-xs">
+          <a href="/rss.xml" className="hover:text-content inline-flex items-center gap-1.5 transition-colors">
+            <Rss className="h-3.5 w-3.5" aria-hidden="true" /> RSS
+          </a>
+          <span>
+            © {new Date().getFullYear()} {site.name}
+          </span>
         </div>
-
-        <nav aria-label="Sitemap" className="sm:text-right">
-          <h2 className="text-content-muted mb-3 text-xs font-semibold tracking-widest uppercase">Sitemap</h2>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link to="/" className="text-content-muted hover:text-accent">
-                Home
-              </Link>
-            </li>
-            {nav.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="text-content-muted hover:text-accent">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <a
-                href="/rss.xml"
-                className="text-content-muted hover:text-accent inline-flex items-center gap-1.5 sm:justify-end"
-              >
-                <Rss className="h-3.5 w-3.5" /> RSS
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div className="border-edge border-t">
-        <p className="text-content-muted mx-auto max-w-5xl px-6 py-6 text-xs">
-          © {new Date().getFullYear()} {site.name}.
-        </p>
       </div>
     </footer>
   )

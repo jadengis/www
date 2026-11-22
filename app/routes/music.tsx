@@ -1,6 +1,5 @@
 import { GearCard, type Gear } from '~/components/gear-card'
 import { Seo } from '~/components/seo'
-import { GradientText } from '~/components/ui/gradient-text'
 
 const gear: Gear[] = [
   {
@@ -41,9 +40,7 @@ export default function Music() {
         path="/music"
         description="John Dengis on guitar, tone, and the gear and signal chains he tinkers with."
       />
-      <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
-        Music &amp; <GradientText>Gear</GradientText>
-      </h1>
+      <h1 className="text-5xl sm:text-6xl">Music &amp; gear</h1>
       <p className="text-content-muted mt-4 max-w-2xl text-lg">
         I&apos;ve played in bands, including a progressive metal project, and I still play guitar most days. A lot of
         the fun is in the gear: the instruments, the amps, and the order things sit in the signal chain.

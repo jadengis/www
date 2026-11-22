@@ -4,7 +4,8 @@ import { Seo } from '~/components/seo'
 import { SocialLinks } from '~/components/social-links'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
-import { GradientText } from '~/components/ui/gradient-text'
+import { Em } from '~/components/ui/em'
+import { SectionLabel } from '~/components/ui/section-label'
 import { personJsonLd } from '~/lib/site'
 
 const highlights = [
@@ -29,7 +30,11 @@ const highlights = [
 ]
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-content-muted mb-4 text-xs font-semibold tracking-widest uppercase">{children}</h2>
+  return (
+    <SectionLabel as="h2" className="mb-4">
+      {children}
+    </SectionLabel>
+  )
 }
 
 export default function About() {
@@ -50,8 +55,8 @@ export default function About() {
       <p className="text-content-muted inline-flex items-center gap-1.5 text-sm">
         <MapPin className="h-4 w-4" /> San Francisco, California
       </p>
-      <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
-        Hey, I&apos;m <GradientText>John</GradientText>.
+      <h1 className="mt-3 text-5xl sm:text-6xl">
+        Hey, I&apos;m <Em>John</Em>.
       </h1>
 
       <div className="text-content/90 mt-8 space-y-5 text-lg leading-relaxed">
@@ -68,7 +73,7 @@ export default function About() {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-3">
-        <Button href="/docs/cv.pdf" variant="gradient">
+        <Button href="/docs/cv.pdf" variant="outline">
           <Download className="h-4 w-4" /> Download résumé (PDF)
         </Button>
         <SocialLinks />
@@ -80,8 +85,8 @@ export default function About() {
         <ol className="border-edge space-y-6 border-l pl-6">
           {highlights.map((h) => (
             <li key={h.role} className="relative">
-              <span className="bg-blood absolute top-1.5 -left-[1.6rem] h-2.5 w-2.5 rounded-full" />
-              <p className="text-content-muted text-sm">{h.period}</p>
+              <span className="bg-accent absolute top-1.5 -left-[1.6rem] h-2.5 w-2.5 rounded-full" />
+              <p className="text-content-muted font-mono text-xs">{h.period}</p>
               <h3 className="font-semibold">{h.role}</h3>
               <p className="text-content-muted mt-1 text-sm leading-relaxed">{h.detail}</p>
             </li>

@@ -1,4 +1,3 @@
-import { Calendar, Clock } from 'lucide-react'
 import { Link } from 'react-router'
 import { Badge } from '~/components/ui/badge'
 import { cn } from '~/lib/cn'
@@ -26,17 +25,11 @@ export function PostMeta({
   className?: string
 }) {
   return (
-    <div className={cn('text-content-muted flex flex-wrap items-center gap-x-4 gap-y-2 text-sm', className)}>
-      <span className="inline-flex items-center gap-1.5">
-        <Calendar className="h-4 w-4" />
+    <div className={cn('text-content-muted flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs', className)}>
+      <span>
         <time dateTime={date}>{formatDate(date)}</time>
+        {readingTime !== undefined && <> · {readingTime} min read</>}
       </span>
-      {readingTime !== undefined && (
-        <span className="inline-flex items-center gap-1.5">
-          <Clock className="h-4 w-4" />
-          {readingTime} min read
-        </span>
-      )}
       <span className="flex flex-wrap gap-1.5">
         {tags.map((t) =>
           linkTags ? (

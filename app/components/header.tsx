@@ -1,74 +1,81 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
+import { CopyEmail } from '~/components/copy-email'
 import { cn } from '~/lib/cn'
 import { nav, site } from '~/lib/site'
 
-function Brand({ onClick }: { onClick?: () => void }) {
+function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
-    <Link to="/" onClick={onClick} className="group flex items-center gap-2.5 font-bold tracking-tight">
-      <span className="bg-chromatic animate-shimmer flex h-8 w-8 items-center justify-center rounded-md text-sm font-black text-white">
-        JD
-      </span>
-      <span className="text-content">{site.name}</span>
+    <Link to="/" onClick={onClick} className="font-display text-content hover:text-accent text-xl transition-colors">
+      {site.name}
     </Link>
   )
 }
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'relative text-sm font-medium transition-colors hover:text-accent',
-    isActive ? 'text-accent' : 'text-content-muted',
+    'relative py-1 text-sm transition-colors hover:text-content',
+    // Active route: full-strength text with an accent rule underneath.
+    "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-accent after:transition-opacity after:content-['']",
+    isActive ? 'text-content after:opacity-100' : 'text-content-muted after:opacity-0',
   )
 
 export function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="border-edge bg-surface/80 sticky top-0 z-50 border-b backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Brand />
+    <header className="border-edge bg-surface/85 sticky top-0 z-50 border-b backdrop-blur-md">
+      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-6 px-6">
+        <Wordmark onClick={() => setOpen(false)} />
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => (
-            <li key={item.to}>
-              <NavLink to={item.to} className={linkClass}>
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-8">
+          <ul className="hidden items-center gap-7 md:flex">
+            {nav.map((item) => (
+              <li key={item.to}>
+                <NavLink to={item.to} className={linkClass}>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
 
-        <button
-          type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="text-content hover:text-accent md:hidden"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <CopyEmail className="hidden sm:inline-flex" />
+
+          <button
+            type="button"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="text-content hover:text-accent -mr-2 flex h-10 w-10 items-center justify-center md:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <ul className="border-edge flex flex-col gap-1 border-t px-6 py-4 md:hidden">
-          {nav.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  cn(
-                    'block rounded-md px-3 py-2 text-base font-medium transition-colors',
-                    isActive ? 'text-accent bg-surface-2' : 'text-content-muted hover:text-accent hover:bg-surface-2',
-                  )
-                }
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="border-edge border-t px-6 pt-3 pb-5 md:hidden">
+          <ul className="flex flex-col">
+            {nav.map((item) => (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    cn(
+                      'font-display block py-2 text-2xl transition-colors',
+                      isActive ? 'text-accent' : 'text-content hover:text-accent',
+                    )
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <CopyEmail className="mt-4 sm:hidden" />
+        </div>
       )}
     </header>
   )
