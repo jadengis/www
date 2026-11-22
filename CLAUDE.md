@@ -13,6 +13,13 @@ pnpm start        # Run production server
 pnpm typecheck    # Generate React Router types + run TypeScript check
 ```
 
+## Deployment
+
+Hosted on **Railway** (project `www`, service `www`), built from the root `Dockerfile`. Pushes to `master` deploy after `.github/workflows/ci.yml` passes; PRs get preview environments.
+
+- **Infrastructure lives in `.railway/railway.ts`** (Railway IaC). Change service settings there, not in the dashboard, or the next apply reverts them. Don't add `railway.json`/`railway.toml` (deprecated, and a service can't be managed by both).
+- Preview/apply locally with `railway config plan` / `railway config apply`, or let `.github/workflows/railway-config.yml` plan on the PR and apply on merge.
+
 ## Architecture
 
 This is a **React Router v7** full-stack app with SSR enabled.

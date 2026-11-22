@@ -1,0 +1,28 @@
+# Railway deploys master from GitHub and waits for this workflow to pass.
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  check:
+    name: Typecheck, format, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .tool-versions
+      # pnpm version is pinned by package.json "packageManager".
+      - run: npm install -g corepack@latest && corepack enable
+        env:
+          COREPACK_ENABLE_DOWNLOAD_PROMPT: 0
+      - run: pnpm install --frozen-lockfile
+        env:
+          COREPACK_ENABLE_DOWNLOAD_PROMPT: 0
+      - run: pnpm typecheck
+      - run: pnpm format:check
+      - run: pnpm build

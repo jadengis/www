@@ -1,0 +1,2 @@
+# pnpm owns this file's formatting; reformatting it makes every install produce a noisy diff.
+pnpm-lock.yaml
