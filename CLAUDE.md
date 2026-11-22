@@ -15,7 +15,7 @@ pnpm typecheck    # Generate React Router types + run TypeScript check
 
 ## Deployment
 
-Hosted on **Railway** (project `www`, service `www`), built from the root `Dockerfile`. Pushes to `master` deploy after `.github/workflows/ci.yml` passes; PRs get preview environments.
+Hosted on **Railway** (project `www`, service `www`), built from the root `Dockerfile`. Pushes to `master` deploy after `.github/workflows/ci.yml` passes. Each PR gets a preview environment (`www-pr-<n>`, URL `https://www-www-pr-<n>.up.railway.app`, posted as a PR comment by Railway) that is torn down when the PR closes.
 
 - **Infrastructure lives in `.railway/railway.ts`** (Railway IaC). Change service settings there, not in the dashboard, or the next apply reverts them. Don't add `railway.json`/`railway.toml` (deprecated, and a service can't be managed by both).
 - Preview/apply locally with `railway config plan` / `railway config apply`, or let `.github/workflows/railway-config.yml` plan on the PR and apply on merge.
