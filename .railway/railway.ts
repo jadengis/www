@@ -29,6 +29,10 @@ export default defineRailway((ctx) => {
       multiRegionConfig: { 'us-west2': { numReplicas: 1 } },
       limitOverride: { containers: { cpu: 1, memoryBytes: 500_000_000 } },
     },
+    // Edge caching on the public domains with Railway's defaults: HTML follows
+    // the response's Cache-Control, other cacheable responses without one are
+    // kept for 2 hours.
+    cdn: { enabled: true },
     env: {
       // react-router-serve listens on PORT; the domains below target the same port.
       PORT: '3000',
