@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { SocialLinks } from '~/components/social-links'
 import { Button } from '~/components/ui/button'
-import { site } from '~/lib/site'
 
 /** Full-bleed homepage hero: name over a real background image, never in a card. */
 export function Hero() {
@@ -21,14 +20,8 @@ export function Hero() {
       />
 
       <div className="mx-auto w-full max-w-5xl px-6 py-20">
-        <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-white/70 uppercase">
-          San Francisco · Engineer · Maker
-        </p>
-        <h1 className="max-w-3xl text-5xl font-black tracking-tight text-white sm:text-7xl">
-          John <span className="text-gradient animate-shimmer bg-chromatic">Dengis</span>
-        </h1>
-        <p className="mt-6 max-w-xl text-lg text-white/80 sm:text-xl">{site.tagline}</p>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/65">
+        <h1 className="max-w-3xl text-6xl leading-none text-white sm:text-8xl">John Dengis</h1>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
           Software engineer and engineering leader. I build things, make videos and music, and study languages, usually
           all at once.
         </p>
@@ -37,12 +30,7 @@ export function Hero() {
           <Button to="/projects" variant="solid" size="lg">
             See my work <ArrowRight className="h-4 w-4" />
           </Button>
-          <Button
-            to="/about"
-            variant="outline"
-            size="lg"
-            className="border-white/30 text-white hover:border-white hover:text-white"
-          >
+          <Button to="/about" variant="outline" size="lg" className="border-white/30 text-white hover:border-white">
             About me
           </Button>
           <SocialLinks className="ml-1" onDark />

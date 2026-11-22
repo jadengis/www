@@ -2,7 +2,6 @@ import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router'
 import { BlogList } from '~/components/blog-list'
 import { Seo } from '~/components/seo'
-import { GradientText } from '~/components/ui/gradient-text'
 import { getPostsByTag } from '~/lib/posts'
 import type { Route } from './+types/tag'
 
@@ -24,12 +23,12 @@ export default function BlogTag({ loaderData }: Route.ComponentProps) {
       />
       <Link
         to="/blog"
-        className="text-content-muted hover:text-accent inline-flex items-center gap-1.5 text-sm font-medium"
+        className="text-content-muted hover:text-content inline-flex items-center gap-1.5 text-sm transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> All posts
       </Link>
-      <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
-        Tagged <GradientText>#{tag}</GradientText>
+      <h1 className="mt-4 text-5xl sm:text-6xl">
+        Tagged <span className="text-accent font-mono text-[0.8em]">#{tag}</span>
       </h1>
       <p className="text-content-muted mt-4 max-w-xl text-lg">
         {posts.length} {posts.length === 1 ? 'post' : 'posts'} with this tag.

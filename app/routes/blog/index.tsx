@@ -1,7 +1,6 @@
 import { Rss } from 'lucide-react'
 import { BlogList } from '~/components/blog-list'
 import { Seo } from '~/components/seo'
-import { GradientText } from '~/components/ui/gradient-text'
 import { IconButton } from '~/components/ui/icon-button'
 import { getAllPosts } from '~/lib/posts'
 import type { Route } from './+types/index'
@@ -22,9 +21,7 @@ export default function BlogIndex({ loaderData }: Route.ComponentProps) {
       />
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
-            The <GradientText>Blog</GradientText>
-          </h1>
+          <h1 className="text-5xl sm:text-6xl">Blog</h1>
           <p className="text-content-muted mt-4 max-w-xl text-lg">
             Notes on engineering, AI, music, and making things, usually with a tangent or two.
           </p>

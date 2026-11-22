@@ -4,7 +4,7 @@ import { Hero } from '~/components/hero'
 import { JsonLd } from '~/components/jsonld'
 import { ProjectCard } from '~/components/project-card'
 import { Seo } from '~/components/seo'
-import { GradientText } from '~/components/ui/gradient-text'
+import { SectionLabel } from '~/components/ui/section-label'
 import { projects } from '~/lib/projects'
 import { personJsonLd, site } from '~/lib/site'
 import type { Route } from './+types/home'
@@ -61,15 +61,11 @@ export default function Home() {
 
       {/* Facets */}
       <section className="mx-auto max-w-5xl px-6 py-20">
-        <h2 className="text-3xl font-bold tracking-tight">
-          A few things I <GradientText>care about</GradientText>
-        </h2>
+        <SectionLabel index={1}>care</SectionLabel>
+        <h2 className="mt-3 text-4xl">A few things I care about</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {facets.map(({ icon: Icon, title, body }) => (
-            <div
-              key={title}
-              className="group border-edge bg-surface-2 hover:border-accent rounded-lg border p-6 transition-colors"
-            >
+            <div key={title} className="border-edge bg-surface-2 rounded-lg border p-6">
               <Icon className="text-accent h-7 w-7" />
               <h3 className="mt-4 font-semibold">{title}</h3>
               <p className="text-content-muted mt-2 text-sm leading-relaxed">{body}</p>
@@ -80,13 +76,12 @@ export default function Home() {
 
       {/* Featured projects */}
       <section className="mx-auto max-w-5xl px-6 pb-8">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Featured <GradientText>projects</GradientText>
-          </h2>
+        <SectionLabel index={2}>build</SectionLabel>
+        <div className="mt-3 flex items-end justify-between gap-4">
+          <h2 className="text-4xl">Featured projects</h2>
           <Link
             to="/projects"
-            className="text-content-muted hover:text-accent inline-flex items-center gap-1 text-sm font-medium"
+            className="text-content-muted hover:text-content inline-flex shrink-0 items-center gap-1 text-sm transition-colors"
           >
             All projects <ArrowRight className="h-4 w-4" />
           </Link>

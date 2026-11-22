@@ -3,6 +3,7 @@ import type { SocialName } from '~/components/ui/social-icon'
 export const site = {
   name: 'John Dengis',
   url: 'https://john.deng.is',
+  email: 'john@deng.is',
   tagline: 'Software auteur · Code luthier · Music maker · Animal custodian',
   description:
     'Personal site of John Dengis: software engineer and engineering leader, YouTuber, guitarist, and language learner.',

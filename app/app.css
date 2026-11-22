@@ -1,29 +1,26 @@
-@import '@fontsource-variable/inter';
+@import '@fontsource-variable/newsreader/opsz.css';
+@import '@fontsource-variable/newsreader/opsz-italic.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 /* ------------------------------------------------------------------ */
-/*  Brand palette: black / blood-red / bone-white + chromatic accents */
+/*  Type: Newsreader (display + emphasis), Geist (body), Geist Mono   */
+/*  (labels, dates, tags). Letter spacing stays 0 everywhere.          */
 /* ------------------------------------------------------------------ */
 @theme {
+  --font-display: 'Newsreader Variable', ui-serif, Georgia, serif;
   --font-sans:
-    'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Geist Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-ink: #0a0a0b;
-  --color-ink-soft: #141416;
-  --color-bone: #fafafa;
-  --color-bone-soft: #ededee;
-
-  --color-blood: #e11d2a;
-  --color-blood-bright: #ff2d40;
-  --color-blood-dark: #a50f1a;
-
-  /* chromatic gradient stops (identical in both themes) */
-  --color-grad-1: #ff2d40;
-  --color-grad-2: #ff7a18;
-  --color-grad-3: #b829e6;
-  --color-grad-4: #2d9bff;
+  /* Brand: black / blood red / bone. Blood red is the only accent. */
+  --color-ink: #0b0b0c;
+  --color-bone: #ededea;
+  --color-blood: #c8102e;
+  --color-blood-bright: #ff3d4a;
 }
 
 /* Semantic tokens that flip with prefers-color-scheme.
@@ -36,94 +33,58 @@
   --color-content-muted: var(--content-muted);
   --color-edge: var(--edge);
   --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
 }
 
+/* Light: paper, ink, red. */
 :root {
-  --surface: #ffffff;
-  --surface-2: #f4f4f5;
-  --content: var(--color-ink);
-  --content-muted: #52525b;
-  --edge: #e4e4e7;
+  --surface: #fcfcfb;
+  --surface-2: #f2f2f0;
+  --content: #111113;
+  --content-muted: #5c5c63;
+  --edge: #e2e2df;
   --accent: var(--color-blood);
+  --on-accent: #ffffff;
+  color-scheme: light;
 }
 
+/* Dark is the primary experience. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #0a0a0b;
-    --surface-2: #141417;
+    --surface: var(--color-ink);
+    --surface-2: #151517;
     --content: var(--color-bone);
-    --content-muted: #a1a1aa;
-    --edge: #27272a;
+    --content-muted: #a0a0a8;
+    --edge: #26262a;
     --accent: var(--color-blood-bright);
+    --on-accent: var(--color-ink);
     color-scheme: dark;
   }
 }
 
-html,
-body {
-  @apply bg-surface text-content;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Reusable gradient / motion utilities                              */
-/* ------------------------------------------------------------------ */
-@layer utilities {
-  .bg-chromatic {
-    background-image: linear-gradient(
-      120deg,
-      var(--color-grad-1),
-      var(--color-grad-2),
-      var(--color-grad-3),
-      var(--color-grad-4)
-    );
+@layer base {
+  html,
+  body {
+    @apply bg-surface text-content font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  .text-gradient {
-    background-image: linear-gradient(
-      120deg,
-      var(--color-grad-1),
-      var(--color-grad-2),
-      var(--color-grad-3),
-      var(--color-grad-4)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Page and section headings speak in the display serif. Smaller headings
+     (cards, lists) stay in the sans. */
+  h1,
+  h2 {
+    @apply font-display font-normal text-balance;
+    letter-spacing: 0;
+    font-optical-sizing: auto;
   }
 
-  /* double-background trick: solid fill + gradient ring on border-box */
-  .gradient-border {
-    border: 2px solid transparent;
-    background-image:
-      linear-gradient(var(--surface), var(--surface)),
-      linear-gradient(120deg, var(--color-grad-1), var(--color-grad-2), var(--color-grad-3), var(--color-grad-4));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+  ::selection {
+    @apply bg-accent text-on-accent;
   }
 
-  .animate-shimmer {
-    background-size: 220% 220%;
-    animation: shimmer 7s ease-in-out infinite;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-shimmer {
-    animation: none;
+  :focus-visible {
+    @apply outline-accent outline-2 outline-offset-2;
   }
 }
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { cn } from '~/lib/cn'
 
 const classes =
-  'inline-flex h-10 w-10 items-center justify-center rounded-lg border border-edge text-content-muted transition-all duration-200 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
+  'inline-flex h-10 w-10 items-center justify-center rounded-md border border-edge text-content-muted transition-colors duration-150 hover:border-content hover:text-content'
 
 type Props = {
   label: string

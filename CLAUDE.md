@@ -37,3 +37,8 @@ This is a **React Router v7** full-stack app with SSR enabled.
 - **Type-safe routes**: Route modules receive typed props from React Router's generated types (`.react-router/types/`). Use `Route.LoaderArgs`, `Route.MetaArgs`, etc. — run `pnpm typecheck` to regenerate after adding routes.
 - **SSR is on** (`ssr: true` in `react-router.config.ts`). Data loading happens via `loader` functions, mutations via `action` functions.
 - **Styling**: TailwindCSS v4. Dark mode uses `prefers-color-scheme` media query, not a class toggle.
+- **Design system** (see `docs/specs/002-modernization-plan.md`):
+  - Type: `font-display` (Newsreader) for h1/h2 and emphasis, `font-sans` (Geist) for body, `font-mono` (Geist Mono) for labels, dates and tags. Letter spacing stays 0; no `tracking-*` or `uppercase` labels.
+  - Color: semantic tokens only (`surface`, `surface-2`, `content`, `content-muted`, `edge`, `accent`, `on-accent`). Blood red (`accent`) is the single accent. No gradient text, shimmer or glow.
+  - Primitives: `Em` for one emphasized phrase, `SectionLabel` for `01 // label` markers, `Button` (`solid` | `outline` | `link`).
+  - `scripts/generate-og.mts` renders OG cards, `favicon.svg/.ico` and `apple-touch-icon.png` at build time.

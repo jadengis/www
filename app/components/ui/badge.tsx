@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react'
 import { cn } from '~/lib/cn'
 
-type Tone = 'neutral' | 'accent' | 'gradient'
+type Tone = 'neutral' | 'accent'
 
 const tones: Record<Tone, string> = {
   neutral: 'border-edge bg-surface text-content-muted',
-  accent: 'border-blood/30 bg-blood/10 text-accent',
-  gradient: 'gradient-border text-content',
+  accent: 'border-accent/40 text-accent',
 }
 
 /** Small pill for tags, language levels, statuses. */
@@ -22,7 +21,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium',
+        'inline-flex items-center gap-1.5 rounded-sm border px-2 py-0.5 font-mono text-xs',
         tones[tone],
         className,
       )}
