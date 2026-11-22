@@ -8,6 +8,8 @@ on:
     types: [opened, synchronize, reopened, closed]
     paths:
       - '.railway/**'
+      - '.npmrc'
+      - '.github/workflows/railway-config.yml'
 
 permissions:
   contents: read
