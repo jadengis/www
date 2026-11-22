@@ -4,7 +4,11 @@
  * Preview:  railway config plan
  * Apply:    railway config apply
  *
- * PR environments are a project setting and aren't expressed here.
+ * Not expressed here (set in the Railway dashboard):
+ * - PR environments: Project Settings → Environments → Enable PR Environments
+ *   (base: production). Each PR gets `www-pr-<n>` at www-www-pr-<n>.up.railway.app.
+ * - The Railway GitHub App must have access to jadengis/www. Without it there is
+ *   no deploy trigger: pushes and PRs don't deploy, and `checkSuites` can't apply.
  */
 import { defineRailway, github, project, service } from 'railway/iac'
 
