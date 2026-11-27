@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { CopyEmail } from '~/components/copy-email'
 import { JsonLd } from '~/components/jsonld'
 import { formatDate } from '~/components/post-meta'
+import { RevealEmail } from '~/components/reveal-email'
 import { Seo } from '~/components/seo'
 import { Button } from '~/components/ui/button'
 import { SectionLabel } from '~/components/ui/section-label'
@@ -330,14 +331,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       <Section id="say-hi">
         <Lead>Email is the best way to reach me.</Lead>
-        <p className="mt-6">
-          <a
-            href={`mailto:${site.email}`}
-            className="font-display hover:text-accent text-4xl break-all transition-colors sm:text-5xl"
-          >
-            {site.email}
-          </a>
-        </p>
+        <RevealEmail className="mt-6" />
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <CopyEmail />
           <Button href="/docs/cv.pdf" variant="outline" className="h-9 rounded-full px-3.5">
