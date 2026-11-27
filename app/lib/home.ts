@@ -11,7 +11,8 @@ export const work: WorkItem[] = [
   {
     when: 'Now',
     title: 'Slash',
-    body: 'Software engineer.',
+    href: 'https://www.slash.com',
+    body: 'Engineering. Building the best way for a business to bank: cards, checking and treasury, with an API for all of it.',
   },
   {
     when: '2026',
