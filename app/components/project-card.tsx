@@ -1,8 +1,18 @@
-import { ArrowUpRight } from 'lucide-react'
+import { AppWindow, ArrowUpRight } from 'lucide-react'
 import { SocialIcon } from '~/components/ui/social-icon'
 import { languageColors, type Project } from '~/lib/projects'
 
 function Avatar({ project }: { project: Project }) {
+  if (project.kind === 'app') {
+    return (
+      <span
+        className="border-edge text-accent flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border"
+        style={{ backgroundColor: project.color }}
+      >
+        <AppWindow className="h-6 w-6" />
+      </span>
+    )
+  }
   if (project.kind === 'channel') {
     return (
       <span

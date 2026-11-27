@@ -8,14 +8,21 @@ export type Project = {
   name: string
   description: string
   href: string
-  kind: 'repo' | 'channel'
+  kind: 'app' | 'repo' | 'channel'
   language?: string
   /** Accent color used for the avatar tile + hover glow. */
   color: string
 }
 
-/** Curated set: select open-source repos + the YouTube channel. (No Underflow.) */
+/** Curated set: apps, select open-source repos + the YouTube channel. (No Underflow.) */
 export const projects: Project[] = [
+  {
+    name: 'Tangent',
+    description: 'A local-first desktop client for GitHub Issues and Projects, fast enough to keep up with you.',
+    href: 'https://tangentissues.com',
+    kind: 'app',
+    color: '#0b0b0c',
+  },
   {
     name: 'ngx-clarity',
     description: 'Angular module that drops Microsoft Clarity analytics into an app with a single import.',

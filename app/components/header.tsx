@@ -1,7 +1,8 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink, useLocation } from 'react-router'
 import { CopyEmail } from '~/components/copy-email'
+import { useActiveSection } from '~/lib/active-section'
 import { cn } from '~/lib/cn'
 import { nav, site } from '~/lib/site'
 
@@ -13,7 +14,7 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
   )
 }
 
-const linkClass = ({ isActive }: { isActive: boolean }) =>
+const linkClass = (isActive: boolean) =>
   cn(
     'relative py-1 text-sm transition-colors hover:text-content',
     // Active route: full-strength text with an accent rule underneath.
@@ -23,6 +24,11 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const section = useActiveSection()
+  // On the home page, a link also lights up while its section is in view.
+  const inView = (item: (typeof nav)[number]) =>
+    pathname === '/' && item.section !== undefined && item.section === section
 
   return (
     <header className="border-edge bg-surface/85 sticky top-0 z-50 border-b backdrop-blur-md">
@@ -33,7 +39,7 @@ export function Header() {
           <ul className="hidden items-center gap-7 md:flex">
             {nav.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} className={linkClass}>
+                <NavLink to={item.to} className={({ isActive }) => linkClass(isActive || inView(item))}>
                   {item.label}
                 </NavLink>
               </li>
