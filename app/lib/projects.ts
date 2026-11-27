@@ -12,6 +12,8 @@ export type Project = {
   language?: string
   /** Accent color used for the avatar tile + hover glow. */
   color: string
+  /** The project's own icon, shown instead of the generic avatar tile. */
+  logo?: string
 }
 
 /** Curated set: apps, select open-source repos + the YouTube channel. (No Underflow.) */
@@ -21,7 +23,8 @@ export const projects: Project[] = [
     description: 'A local-first desktop client for GitHub Issues and Projects, fast enough to keep up with you.',
     href: 'https://tangentissues.com',
     kind: 'app',
-    color: '#0b0b0c',
+    color: '#1d1b52',
+    logo: '/images/projects/tangent.svg',
   },
   {
     name: 'ngx-clarity',
