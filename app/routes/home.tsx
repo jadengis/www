@@ -9,7 +9,7 @@ import { Button } from '~/components/ui/button'
 import { SectionLabel } from '~/components/ui/section-label'
 import { useTrackSections } from '~/lib/active-section'
 import { cn } from '~/lib/cn'
-import { languages, nowUpdated, rig, videos, work, type Language } from '~/lib/home'
+import { languages, nowUpdated, rig, tangent, videos, work, type Language } from '~/lib/home'
 import { getAllPosts } from '~/lib/posts'
 import { languageColors, projects } from '~/lib/projects'
 import { personJsonLd, site } from '~/lib/site'
@@ -140,16 +140,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <section className="mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
         <h1 className="text-7xl leading-[0.95] sm:text-9xl">John Dengis</h1>
         <p className="font-display text-content-muted mt-6 max-w-3xl text-2xl leading-snug sm:text-4xl">
-          is a software engineer at Slash, the maker of{' '}
-          <a
-            href="https://tangentissues.com"
-            target="_blank"
-            rel="noreferrer"
-            className="text-content hover:text-accent transition-colors"
-          >
-            Tangent
-          </a>
-          , and a guitarist who used to make cooking videos.
+          is a software auteur, code luthier, music maker and animal custodian.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <CopyEmail solid className="h-11 px-5" />
@@ -170,6 +161,17 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <p className="text-content-muted mt-1 max-w-2xl leading-relaxed">{item.body}</p>
             </Row>
           ))}
+          <Row when="Projects">
+            <div className="flex items-start gap-4">
+              <img src={tangent.logo} alt="" width={56} height={56} className="-m-1 h-14 w-14 shrink-0" />
+              <div className="min-w-0">
+                <h3 className="text-lg font-medium">
+                  <ExternalLink href={tangent.href}>{tangent.title}</ExternalLink>
+                </h3>
+                <p className="text-content-muted mt-1 max-w-2xl leading-relaxed">{tangent.body}</p>
+              </div>
+            </div>
+          </Row>
           <Row when="Open source">
             <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
               {repos.map((repo) => (
@@ -237,7 +239,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       </Section>
 
       <Section id="speak">
-        <Lead>Two languages in progress, one of them rusty.</Lead>
+        <Lead>Learning Mandarin and Japanese.</Lead>
         <Rows>
           {languages.map((language) => (
             <Row key={language.name} when={language.scale}>
@@ -299,7 +301,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <p className="text-content-muted font-mono text-xs">Updated {nowUpdated}</p>
         <div className="mt-4 max-w-2xl space-y-4 text-lg leading-relaxed">
           <p>
-            Working as a software engineer at Slash, and shipping{' '}
+            Shipping{' '}
             <a
               href="https://tangentissues.com"
               target="_blank"
@@ -311,7 +313,18 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             : version 0.1.0 came out on November 22.
           </p>
           <p>Making a couple of games. More on those when they&apos;re announced.</p>
-          <p>Japanese every day, aiming for N3.</p>
+          <p>
+            Japanese every day, aiming for N3. The goal is to finish{' '}
+            <a
+              href="https://en.wikipedia.org/wiki/Bahamut_Lagoon"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent underline decoration-1 underline-offset-4 hover:decoration-2"
+            >
+              Bahamut Lagoon
+            </a>
+            .
+          </p>
         </div>
       </Section>
 

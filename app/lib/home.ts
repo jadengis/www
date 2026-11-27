@@ -15,19 +15,22 @@ export const work: WorkItem[] = [
     body: 'Engineering. Building the best way for a business to bank: cards, checking and treasury, with an API for all of it.',
   },
   {
-    when: '2026',
-    title: 'Tangent',
-    href: 'https://tangentissues.com',
-    body: 'A local-first desktop client for GitHub Issues and Projects. Lists, filters, search and edits run on your machine in under a frame, then sync to GitHub in the background. Version 0.1.0 is out for macOS, Windows and Linux.',
-  },
-  {
     when: '2019–2025',
     title: 'Instacart',
+    href: 'https://www.instacart.com',
     body: 'Engineering leadership in the fulfillment org, building with some of the largest enterprises in the world. I joined as a founding engineer on the Connect API and left as a senior engineering manager leading about 20 engineers.',
   },
 ]
 
-/** A JLPT/CEFR-style ladder: `level` is reached, `next` is in progress. */
+/** Tangent leads the projects row in the build section, ahead of the open-source libraries. */
+export const tangent = {
+  title: 'Tangent',
+  href: 'https://tangentissues.com',
+  logo: '/images/projects/tangent.svg',
+  body: 'A local-first desktop client for GitHub Issues and Projects. Lists, filters, search and edits run on your machine in under a frame, then sync to GitHub in the background. Version 0.1.0 is out for macOS, Windows and Linux.',
+}
+
+/** An HSK/JLPT-style ladder: `level` is reached, `next` is in progress. */
 export type Language = {
   name: string
   native: string
@@ -42,10 +45,11 @@ export const languages: Language[] = [
   {
     name: 'Mandarin',
     native: '中文',
-    scale: 'CEFR',
-    steps: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-    level: 'B2',
-    note: 'Got it to a comfortable B2 (HSK 4). Bringing it back from rusty.',
+    scale: 'HSK',
+    steps: ['1', '2', '3', '4', '5', '6'],
+    level: '3',
+    next: '4',
+    note: 'HSK 3 done, and partway through HSK 4.',
   },
   {
     name: 'Japanese',

@@ -117,11 +117,10 @@ export default function About() {
         <div>
           <SectionTitle>Languages</SectionTitle>
           <p className="text-content-muted mb-3 text-sm leading-relaxed">
-            I got Mandarin to a comfortable B2 (HSK 4) and I&apos;m bringing it back from rusty. Japanese is the daily
-            focus right now.
+            I&apos;ve completed HSK 3 in Mandarin and got partway through HSK 4. Japanese is the daily focus right now.
           </p>
           <div className="flex flex-wrap gap-2">
-            <Badge tone="accent">中文 · B2 / HSK 4</Badge>
+            <Badge tone="accent">中文 · HSK 3 → 4</Badge>
             <Badge tone="accent">日本語 · N4 → N3</Badge>
           </div>
         </div>
