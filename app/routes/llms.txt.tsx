@@ -12,11 +12,12 @@ export function loader() {
 ${site.tagline}. Based in San Francisco, California. Software engineer at Slash and
 maker of Tangent (https://tangentissues.com), a local-first desktop client for GitHub
 Issues and Projects. Previously a founding engineer on Instacart's Connect API and later
-a Senior Engineering Manager in Instacart's fulfillment org.
+a Senior Engineering Manager in Instacart's fulfillment org. Before that: Coral Health,
+IBM and Vena Solutions. Background in mathematics and physics.
 
 ## Pages
 
-- [About](${site.url}/about): Background, selected experience, languages, and life beyond work.
+- [Home](${site.url}/): Work, writing, music, languages, videos, and what's happening now.
 - [Projects](${site.url}/projects): Tangent, open-source libraries (Angular, Elixir), and the YouTube channel.
 - [Blog](${site.url}/blog): Writing on engineering, AI, music, and the craft of making things.
 - [Music & Gear](${site.url}/music): The guitars, amps, and all-analog signal chain.

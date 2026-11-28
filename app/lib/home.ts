@@ -20,6 +20,11 @@ export const work: WorkItem[] = [
     href: 'https://www.instacart.com',
     body: 'Engineering leadership in the fulfillment org, building with some of the largest enterprises in the world. I joined as a founding engineer on the Connect API and left as a senior engineering manager leading about 20 engineers.',
   },
+  {
+    when: '2015–2019',
+    title: 'Coral Health, IBM and Vena',
+    body: 'A health-records app built from scratch on serverless infrastructure at Coral Health, connected to more than 200 health systems. Before that, performance work on the IBM XL compiler and its java.lang.Math replacement, then on enterprise software at Vena Solutions.',
+  },
 ]
 
 /** Tangent leads the projects row in the build section, ahead of the open-source libraries. */

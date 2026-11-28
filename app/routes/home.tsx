@@ -139,6 +139,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       {/* Hero: the name, then a sentence that finishes it (john.deng.is). */}
       <section className="mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
+        <p className="text-content-muted mb-6 font-mono text-xs">San Francisco, California</p>
         <h1 className="text-7xl leading-[0.95] sm:text-9xl">John Dengis</h1>
         <p className="font-display text-content-muted mt-6 max-w-3xl text-2xl leading-snug sm:text-4xl">
           is a software auteur, code luthier, music maker and animal custodian.
@@ -153,6 +154,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       <Section id="build">
         <Lead>I&apos;ve spent a decade building software and leading the teams that ship it.</Lead>
+        <p className="text-content-muted mt-4 max-w-2xl text-lg leading-relaxed">
+          I came to it from mathematics and physics. I&apos;m a generalist by temperament and a perfectionist by
+          accident.
+        </p>
         <Rows>
           {work.map((item) => (
             <Row key={item.title} when={item.when}>

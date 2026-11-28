@@ -10,7 +10,6 @@ export const site = {
 
 /** `section` is the home-page section id that lights this link up while it's in view. */
 export const nav: { label: string; to: string; section?: string }[] = [
-  { label: 'About', to: '/about' },
   { label: 'Projects', to: '/projects', section: 'build' },
   { label: 'Blog', to: '/blog', section: 'write' },
   { label: 'Music', to: '/music', section: 'play' },
@@ -31,10 +30,7 @@ export const socials: { name: SocialName; label: string; href: string }[] = [
   },
 ]
 
-/**
- * schema.org Person, shared by the home page (with @context) and the about
- * page's ProfilePage mainEntity (without).
- */
+/** schema.org Person for the home page's JSON-LD (add @context when embedding). */
 export const personJsonLd = {
   '@type': 'Person',
   name: site.name,
