@@ -12,8 +12,8 @@ export default function Projects() {
       />
       <h1 className="text-5xl sm:text-6xl">Projects</h1>
       <p className="text-content-muted mt-4 max-w-2xl text-lg">
-        A selection of open-source libraries I&apos;ve built and maintained, mostly for the Angular and Elixir
-        ecosystems, plus the channel where I publish videos.
+        Tangent, a selection of open-source libraries I&apos;ve built and maintained, mostly for the Angular and Elixir
+        ecosystems, and the channel where I publish videos.
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -8,16 +8,18 @@ import { cn } from '~/lib/cn'
 export function SectionLabel({
   index,
   as: Tag = 'p',
+  id,
   className,
   children,
 }: {
   index?: number
   as?: ElementType
+  id?: string
   className?: string
   children: ReactNode
 }) {
   return (
-    <Tag className={cn('text-content-muted font-mono text-sm', className)}>
+    <Tag id={id} className={cn('text-content-muted font-mono text-sm', className)}>
       {index !== undefined && (
         <>
           <span className="text-accent">{String(index).padStart(2, '0')}</span>

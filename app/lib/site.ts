@@ -3,17 +3,16 @@ import type { SocialName } from '~/components/ui/social-icon'
 export const site = {
   name: 'John Dengis',
   url: 'https://john.deng.is',
-  email: 'john@deng.is',
   tagline: 'Software auteur · Code luthier · Music maker · Animal custodian',
   description:
-    'Personal site of John Dengis: software engineer and engineering leader, YouTuber, guitarist, and language learner.',
+    'Personal site of John Dengis: software engineer at Slash, maker of Tangent, guitarist, YouTuber, and language learner.',
 } as const
 
-export const nav: { label: string; to: string }[] = [
-  { label: 'About', to: '/about' },
-  { label: 'Projects', to: '/projects' },
-  { label: 'Blog', to: '/blog' },
-  { label: 'Music', to: '/music' },
+/** `section` is the home-page section id that lights this link up while it's in view. */
+export const nav: { label: string; to: string; section?: string }[] = [
+  { label: 'Projects', to: '/projects', section: 'build' },
+  { label: 'Blog', to: '/blog', section: 'write' },
+  { label: 'Music', to: '/music', section: 'play' },
 ]
 
 export const socials: { name: SocialName; label: string; href: string }[] = [
@@ -31,15 +30,13 @@ export const socials: { name: SocialName; label: string; href: string }[] = [
   },
 ]
 
-/**
- * schema.org Person, shared by the home page (with @context) and the about
- * page's ProfilePage mainEntity (without).
- */
+/** schema.org Person for the home page's JSON-LD (add @context when embedding). */
 export const personJsonLd = {
   '@type': 'Person',
   name: site.name,
   url: site.url,
   jobTitle: 'Software Engineer',
+  worksFor: { '@type': 'Organization', name: 'Slash' },
   description: site.description,
   sameAs: socials.map((s) => s.href),
   knowsLanguage: ['English', 'Mandarin Chinese', 'Japanese'],

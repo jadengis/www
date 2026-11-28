@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Tangent's app icon (GNOME app grid, Alt+Tab): the Horizon logo on the 128px app-icon grid. -->
+  <defs>
+    <filter id="drop" x="-20%" y="-20%" width="140%" height="150%">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+  </defs>
+  <rect x="14" y="16" width="100" height="102" rx="23" fill="#000" opacity="0.32" filter="url(#drop)"/>
+  <g transform="translate(12 10) scale(1.625)">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d1b52"/>
+      <stop offset="1" stop-color="#0a0a1f"/>
+    </linearGradient>
+    <radialGradient id="planet" cx="0.72" cy="0.18" r="0.95">
+      <stop offset="0" stop-color="#b9bbff"/>
+      <stop offset="0.28" stop-color="#6d70e8"/>
+      <stop offset="0.62" stop-color="#2c2a86"/>
+      <stop offset="1" stop-color="#0e0c33"/>
+    </radialGradient>
+    <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="54" y1="57" x2="16" y2="31">
+      <stop offset="0" stop-color="#9ff3ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#e9fbff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#9ff3ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="beam" gradientUnits="userSpaceOnUse" x1="9" y1="9.3" x2="61" y2="53">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.62" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#9ff3ff" stop-opacity="0.15"/>
+    </linearGradient>
+    <radialGradient id="flare">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.25" stop-color="#d8f8ff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#7fe8ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <clipPath id="tile"><rect width="64" height="64" rx="14"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="64" height="64" fill="url(#sky)"/>
+    <circle cx="50" cy="13" r="0.7" fill="#fff" opacity="0.7"/>
+    <circle cx="57" cy="27" r="0.5" fill="#fff" opacity="0.5"/>
+    <circle cx="33" cy="8" r="0.5" fill="#fff" opacity="0.45"/>
+    <circle cx="22" cy="62" r="35" fill="#7b7ff0" opacity="0.35" filter="url(#soft)"/>
+    <circle cx="22" cy="62" r="32" fill="url(#planet)"/>
+    <path d="M53.5 56.4 A32 32 0 0 0 16.4 30.5" fill="none" stroke="url(#rim)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="9" y1="9.3" x2="61" y2="53" stroke="#9ff3ff" stroke-width="5" opacity="0.3" filter="url(#soft)"/>
+    <line x1="9" y1="9.3" x2="61" y2="53" stroke="url(#beam)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="42.6" cy="37.5" r="11" fill="url(#flare)"/>
+    <path d="M42.6 30.5 L43.3 36.8 L49.6 37.5 L43.3 38.2 L42.6 44.5 L41.9 38.2 L35.6 37.5 L41.9 36.8 Z" fill="#fff"/>
+  </g>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#fff" stroke-opacity="0.08"/>
+</g>
+</svg>

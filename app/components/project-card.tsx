@@ -3,6 +3,11 @@ import { SocialIcon } from '~/components/ui/social-icon'
 import { languageColors, type Project } from '~/lib/projects'
 
 function Avatar({ project }: { project: Project }) {
+  if (project.logo) {
+    // App icons carry their own padding and shadow, so draw them a little
+    // larger than the 48px tile and let the margin absorb it.
+    return <img src={project.logo} alt="" width={60} height={60} className="-m-1.5 h-15 w-15 shrink-0" />
+  }
   if (project.kind === 'channel') {
     return (
       <span

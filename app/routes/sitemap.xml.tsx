@@ -1,7 +1,7 @@
 import { getAllPosts, getAllTags, getPostsByTag } from '~/lib/posts'
 import { site } from '~/lib/site'
 
-const staticPaths = ['/', '/about', '/projects', '/blog', '/music']
+const staticPaths = ['/', '/projects', '/blog', '/music']
 
 export function loader() {
   const entries = [
