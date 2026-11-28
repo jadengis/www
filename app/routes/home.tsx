@@ -21,10 +21,11 @@ export function loader() {
 }
 
 /** Section ids in page order; the index is the label number. */
-const SECTIONS = ['build', 'write', 'play', 'speak', 'film', 'now', 'say-hi'] as const
+const SECTIONS = ['work', 'build', 'write', 'play', 'speak', 'film', 'now', 'say-hi'] as const
 type SectionId = (typeof SECTIONS)[number]
 
 const labels: Record<SectionId, string> = {
+  work: 'work',
   build: 'build',
   write: 'write',
   play: 'play',
@@ -152,7 +153,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <Section id="build">
+      <Section id="work">
         <Lead>I&apos;ve spent a decade building software and leading the teams that ship it.</Lead>
         <p className="text-content-muted mt-4 max-w-2xl text-lg leading-relaxed">
           I came to it from mathematics and physics. I&apos;m a generalist by temperament and a perfectionist by
@@ -167,40 +168,46 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <p className="text-content-muted mt-1 max-w-2xl leading-relaxed">{item.body}</p>
             </Row>
           ))}
-          <Row when="Projects">
-            <div className="flex items-start gap-4">
-              <img src={tangent.logo} alt="" width={56} height={56} className="-m-1 h-14 w-14 shrink-0" />
-              <div className="min-w-0">
-                <h3 className="text-lg font-medium">
-                  <ExternalLink href={tangent.href}>{tangent.title}</ExternalLink>
-                </h3>
-                <p className="text-content-muted mt-1 max-w-2xl leading-relaxed">{tangent.body}</p>
-              </div>
-            </div>
-          </Row>
-          <Row when="Open source">
-            <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
-              {repos.map((repo) => (
-                <li key={repo.name}>
-                  <ExternalLink href={repo.href} className="font-mono text-sm">
-                    {repo.name}
-                  </ExternalLink>
-                  <p className="text-content-muted mt-0.5 text-sm leading-relaxed">{repo.description}</p>
-                  {repo.language && (
-                    <p className="text-content-muted mt-1 inline-flex items-center gap-1.5 font-mono text-xs">
-                      <span
-                        className="h-2 w-2 rounded-full"
-                        style={{ backgroundColor: languageColors[repo.language] }}
-                        aria-hidden="true"
-                      />
-                      {repo.language}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </Row>
         </Rows>
+      </Section>
+
+      <Section id="build">
+        <Lead>Things I build on my own.</Lead>
+        <article className="mt-10 flex flex-col gap-6 sm:flex-row sm:gap-8">
+          <img src={tangent.logo} alt="" width={96} height={96} className="-m-2 h-24 w-24 shrink-0" />
+          <div className="min-w-0">
+            <h3 className="font-display text-4xl leading-tight">
+              <ExternalLink href={tangent.href}>{tangent.title}</ExternalLink>
+            </h3>
+            <p className="text-content-muted mt-1 font-mono text-xs">{tangent.release}</p>
+            <p className="text-content-muted mt-4 max-w-2xl text-lg leading-relaxed">{tangent.body}</p>
+          </div>
+        </article>
+
+        <h3 className="text-content-muted mt-16 font-mono text-xs">Open source</h3>
+        <ul className="border-edge divide-edge mt-4 divide-y border-y">
+          {repos.map((repo) => (
+            <li key={repo.name} className="grid gap-1 py-4 sm:grid-cols-[11rem_1fr_6rem] sm:items-baseline sm:gap-6">
+              <ExternalLink href={repo.href} className="font-mono text-sm">
+                {repo.name}
+              </ExternalLink>
+              <p className="text-content-muted text-sm leading-relaxed">{repo.description}</p>
+              {repo.language && (
+                <p className="text-content-muted inline-flex items-center gap-1.5 font-mono text-xs sm:justify-self-end">
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ backgroundColor: languageColors[repo.language] }}
+                    aria-hidden="true"
+                  />
+                  {repo.language}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm">
+          <TextLink to="/projects">All projects</TextLink>
+        </p>
       </Section>
 
       <Section id="write">

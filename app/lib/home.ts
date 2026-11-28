@@ -27,12 +27,13 @@ export const work: WorkItem[] = [
   },
 ]
 
-/** Tangent leads the projects row in the build section, ahead of the open-source libraries. */
+/** Tangent is the featured project in the build section, ahead of the open-source libraries. */
 export const tangent = {
   title: 'Tangent',
   href: 'https://tangentissues.com',
   logo: '/images/projects/tangent.svg',
-  body: 'A local-first desktop client for GitHub Issues and Projects. Lists, filters, search and edits run on your machine in under a frame, then sync to GitHub in the background. Version 0.1.0 is out for macOS, Windows and Linux.',
+  release: 'Version 0.1.0 for macOS, Windows and Linux',
+  body: 'A local-first desktop client for GitHub Issues and Projects. Lists, filters, search and edits run on your machine in under a frame, then sync to GitHub in the background.',
 }
 
 /** An HSK/JLPT-style ladder: `level` is reached, `next` is in progress. */
